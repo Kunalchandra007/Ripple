@@ -30,7 +30,7 @@ export const EVENTS: Event[] = [
     name: 'MUDRA',
     category: 'Dance',
     description: 'Classical and contemporary dance competition showcasing grace and expression.',
-    image: '/events/Mudra.png',
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028806/Mudra_lr2obz.png',
     day: 1,
     time: '2:00 PM'
   },
@@ -39,7 +39,7 @@ export const EVENTS: Event[] = [
     name: 'NAMHYA',
     category: 'Dance',
     description: 'Traditional dance forms celebrating cultural heritage.',
-    image: '/events/Namhya.png',
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772014350/Namhya_tovxg7.png',
     day: 1,
     time: '4:00 PM'
   },
@@ -49,7 +49,7 @@ export const EVENTS: Event[] = [
     name: 'ALANKRIT',
     category: 'Cultural',
     description: 'Cultural extravaganza celebrating diversity and tradition.',
-    image: '/events/Alankrit.png',
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772014357/Alankrit_jhnijw.png',
     day: 2,
     time: '11:00 AM'
   },
@@ -58,7 +58,7 @@ export const EVENTS: Event[] = [
     name: 'NAVRAS',
     category: 'Art',
     description: 'Artistic expression through the nine emotions of classical arts.',
-    image: '/events/Navras.png',
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028854/Navras_e5ktao.png',
     day: 2,
     time: '3:00 PM'
   },
@@ -68,7 +68,7 @@ export const EVENTS: Event[] = [
     name: 'BOB',
     category: 'Music',
     description: 'Battle of Bands - Where musical legends are born.',
-    image: '/events/Bob.png',
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028680/Bob_vsuvin.png',
     day: 1,
     time: '6:00 PM'
   },
@@ -77,7 +77,7 @@ export const EVENTS: Event[] = [
     name: 'EKAGRATA',
     category: 'Music',
     description: 'Solo musical performance showcasing individual talent.',
-    image: '/events/Ekagrata.png',
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028731/Ekagrata_hzpfar.png',
     day: 2,
     time: '5:00 PM'
   },
@@ -86,7 +86,7 @@ export const EVENTS: Event[] = [
     name: 'LYRICA SOLISTICA',
     category: 'Music',
     description: 'Solo singing competition for melodious voices.',
-    image: '/events/Lyrica solistica.png',
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028763/Lyrica_solistica_z0d5oo.png',
     day: 3,
     time: '2:00 PM'
   },
@@ -95,7 +95,7 @@ export const EVENTS: Event[] = [
     name: 'SWARNABHUTI',
     category: 'Music',
     description: 'Classical music competition celebrating traditional melodies.',
-    image: '/events/Swarnabhuti.png',
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772014351/Swarnabhuti_bmdvat.png',
     day: 3,
     time: '4:00 PM'
   },
@@ -105,7 +105,7 @@ export const EVENTS: Event[] = [
     name: 'RANG E KALASH',
     category: 'Cultural',
     description: 'Colorful cultural celebration with traditional performances.',
-    image: '/events/Rang e kalash.png',
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028889/Rang_e_kalash_wgyxoq.png',
     day: 1,
     time: '10:00 AM'
   },
@@ -114,7 +114,7 @@ export const EVENTS: Event[] = [
     name: 'UDAAN',
     category: 'Society',
     description: 'Social awareness event promoting community welfare.',
-    image: '/events/Udaan.png',
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028952/Udaan_hv2r4w.png',
     day: 2,
     time: '1:00 PM'
   }
@@ -159,7 +159,7 @@ export const Hero = ({ onGetTickets }: { onGetTickets: () => void }) => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/bg.jpg" 
+          src="https://res.cloudinary.com/dgmwtonil/image/upload/v1772028541/bg_zhfgwx.jpg" 
           alt="" 
           className="w-full h-full object-cover opacity-50"
         />
@@ -185,7 +185,7 @@ export const Hero = ({ onGetTickets }: { onGetTickets: () => void }) => {
 
       {/* Corner Logo */}
       <img
-        src="/ripple-logo.png"
+        src="https://res.cloudinary.com/dgmwtonil/image/upload/v1772028988/ripple-logo_mletuc.png"
         alt="Ripple 2026 Logo"
         className="absolute top-4 left-4 md:top-6 md:left-6 z-[10] w-20 md:w-28 h-auto drop-shadow-[0_0_12px_rgba(0,0,0,0.55)]"
       />
@@ -286,7 +286,7 @@ export const About = () => {
           className="relative max-w-[420px] mx-auto w-full"
         >
           <img 
-            src="/ripple-logo.png" 
+            src="https://res.cloudinary.com/dgmwtonil/image/upload/v1772028988/ripple-logo_mletuc.png" 
             alt="Ripple Logo" 
             className="relative z-10 rounded-2xl hover:scale-105 transition-all duration-500 shadow-2xl"
           />
@@ -424,7 +424,7 @@ export const Gallery = () => {
     <section className="relative py-16 sm:py-24 px-4 sm:px-6 max-w-full mx-auto bg-black">
       <div
         className="absolute inset-0 z-0 bg-cover bg-center opacity-35 pointer-events-none"
-        style={{ backgroundImage: "url('/bgforgallery.jpg')" }}
+        style={{ backgroundImage: "url('https://res.cloudinary.com/dgmwtonil/image/upload/v1772029020/bgforgallery_pjgnxi.jpg')" }}
       />
       <div className="absolute inset-0 z-0 bg-black/35 pointer-events-none" />
 
@@ -446,7 +446,7 @@ export const Footer = () => {
     <footer id="footer" className="relative bg-black pt-20 sm:pt-24 pb-12 px-4 sm:px-6 overflow-hidden">
       <div
         className="absolute inset-0 z-0 bg-cover bg-center opacity-40 pointer-events-none"
-        style={{ backgroundImage: "url('/footer.jpg')" }}
+        style={{ backgroundImage: "url('https://res.cloudinary.com/dgmwtonil/image/upload/v1772029057/footer_hajjac.jpg')" }}
       />
       <div className="absolute inset-0 z-0 bg-black/55 pointer-events-none" />
 
@@ -464,13 +464,13 @@ export const Footer = () => {
             The ultimate urban college fest. Experience the energy, the talent, and the neon nights.
           </p>
           <div className="flex gap-4">
-            <motion.a whileHover={{ scale: 1.2, color: '#ff008c' }} href="#" className="p-3 glass rounded-full text-white/70">
+            <motion.a whileHover={{ scale: 1.2, color: '#ff008c' }} href="https://instagram.com/ripple_ucms" target="_blank" rel="noopener noreferrer" className="p-3 glass rounded-full text-white/70">
               <Instagram size={24} />
             </motion.a>
-            <motion.a whileHover={{ scale: 1.2, color: '#00f5ff' }} href="#" className="p-3 glass rounded-full text-white/70">
+            <motion.a whileHover={{ scale: 1.2, color: '#00f5ff' }} href="mailto:ripple2026.ucms@gmail.com" className="p-3 glass rounded-full text-white/70">
               <Mail size={24} />
             </motion.a>
-            <motion.a whileHover={{ scale: 1.2, color: '#7b2ff7' }} href="#" className="p-3 glass rounded-full text-white/70">
+            <motion.a whileHover={{ scale: 1.2, color: '#7b2ff7' }} href="tel:7835810675" className="p-3 glass rounded-full text-white/70">
               <Phone size={24} />
             </motion.a>
           </div>
@@ -484,15 +484,15 @@ export const Footer = () => {
           </div>
           <div className="flex items-center gap-4 text-white/60">
             <Instagram className="text-ripple-pink shrink-0" />
-            <p>@ripple_ucms</p>
+            <a href="https://instagram.com/ripple_ucms" target="_blank" rel="noopener noreferrer" className="hover:text-ripple-cyan transition-colors">@ripple_ucms</a>
           </div>
           <div className="flex items-center gap-4 text-white/60">
             <Mail className="text-ripple-pink shrink-0" />
-            <p>ripple2026.ucms@gmail.com</p>
+            <a href="mailto:ripple2026.ucms@gmail.com" className="hover:text-ripple-cyan transition-colors">ripple2026.ucms@gmail.com</a>
           </div>
           <div className="flex items-center gap-4 text-white/60">
             <Phone className="text-ripple-pink shrink-0" />
-            <p>7835810675</p>
+            <a href="tel:7835810675" className="hover:text-ripple-cyan transition-colors">7835810675</a>
           </div>
         </div>
 
@@ -530,7 +530,7 @@ export const EventsPage = () => {
       <div 
         className="fixed inset-0 z-0"
         style={{
-          backgroundImage: 'url(/bgforevents.jpg)',
+          backgroundImage: 'url(https://res.cloudinary.com/dgmwtonil/image/upload/v1772028969/bgforevents_hqeboh.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'scroll',

@@ -62,7 +62,7 @@ export default function App() {
                 <div 
                   className="absolute inset-0 z-0"
                   style={{
-                    backgroundImage: 'url(/scrolling.jpg)',
+                    backgroundImage: 'url(https://res.cloudinary.com/dgmwtonil/image/upload/v1772029041/scrolling_ge2fny.jpg)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundAttachment: 'scroll',
