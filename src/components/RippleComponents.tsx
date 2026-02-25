@@ -3,7 +3,6 @@ import { Menu, X, Instagram, Mail, Phone, MapPin, ChevronDown, ExternalLink, Tic
 import React, { useState, useEffect } from 'react';
 import Lightning from './Lightning';
 import Squares from './Squares';
-import DomeGallery from './DomeGallery';
 import Dock from './Dock';
 import Balatro from './Balatro';
 
@@ -399,16 +398,7 @@ export const Schedule = () => {
 };
 
 export const Gallery = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
-    const update = () => setIsMobile(mediaQuery.matches);
-    update();
-
-    mediaQuery.addEventListener('change', update);
-    return () => mediaQuery.removeEventListener('change', update);
-  }, []);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const galleryImages = [
     '/gallery/gyg.png',
@@ -433,6 +423,21 @@ export const Gallery = () => {
     '/gallery/Screenshot at 2023-11-10 06-27-58.png',
   ];
 
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % galleryImages.length);
+    }, 3500);
+    return () => window.clearInterval(timer);
+  }, [galleryImages.length]);
+
+  const goPrev = () => {
+    setActiveIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
+  const goNext = () => {
+    setActiveIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
   return (
     <section className="relative py-16 sm:py-24 px-4 sm:px-6 max-w-full mx-auto bg-black">
       {/* Background Video */}
@@ -449,39 +454,59 @@ export const Gallery = () => {
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
-      {/* Squares Background */}
-      <div className="absolute inset-0 z-[3] opacity-25">
-        <Squares 
-          direction="up"
-          speed={0.6}
-          borderColor="rgba(30, 58, 138, 0.5)"
-          squareSize={45}
-          hoverFillColor="rgba(30, 58, 138, 0.15)"
-        />
-      </div>
-
       <h2 className="relative z-10 text-4xl sm:text-5xl md:text-7xl font-heading text-center mb-10 sm:mb-16">GLIMPSE OF PREVIOUS RIPPLE</h2>
-      
-      <div className="relative z-10 min-h-[360px] sm:min-h-[500px] md:min-h-[600px]">
-        <DomeGallery 
-          images={galleryImages} 
-          grayscale={false}
-          fit={isMobile ? 0.42 : 0.45}
-          fitBasis="auto"
-          minRadius={isMobile ? 120 : 320}
-          maxRadius={Infinity}
-          padFactor={0.25}
-          overlayBlurColor="rgba(6, 0, 16, 0.2)"
-          maxVerticalRotationDeg={5}
-          dragSensitivity={isMobile ? 16 : 12}
-          enlargeTransitionMs={250}
-          segments={isMobile ? 18 : 30}
-          dragDampening={1.2}
-          openedImageWidth={isMobile ? '92vw' : '90vw'}
-          openedImageHeight={isMobile ? '78vh' : '90vw'}
-          imageBorderRadius="20px"
-          openedImageBorderRadius="20px"
-        />
+
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/20 bg-black/30 backdrop-blur-sm">
+          <div className="relative aspect-[16/10] sm:aspect-[16/9]">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={galleryImages[activeIndex]}
+                src={galleryImages[activeIndex]}
+                alt={`Ripple gallery slide ${activeIndex + 1}`}
+                className="absolute inset-0 w-full h-full object-cover"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                loading="lazy"
+                decoding="async"
+              />
+            </AnimatePresence>
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
+
+            <button
+              type="button"
+              onClick={goPrev}
+              className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/50 text-white border border-white/20 hover:bg-black/70 transition"
+              aria-label="Previous image"
+            >
+              &#8249;
+            </button>
+            <button
+              type="button"
+              onClick={goNext}
+              className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/50 text-white border border-white/20 hover:bg-black/70 transition"
+              aria-label="Next image"
+            >
+              &#8250;
+            </button>
+
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+              {galleryImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setActiveIndex(idx)}
+                  className={`h-2.5 rounded-full transition-all ${idx === activeIndex ? 'w-8 bg-ripple-cyan' : 'w-2.5 bg-white/50 hover:bg-white/80'}`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
@@ -490,6 +515,12 @@ export const Gallery = () => {
 export const Footer = () => {
   return (
     <footer id="footer" className="relative bg-black pt-20 sm:pt-24 pb-12 px-4 sm:px-6 overflow-hidden">
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-40 pointer-events-none"
+        style={{ backgroundImage: "url('/footer.jpg')" }}
+      />
+      <div className="absolute inset-0 z-0 bg-black/55 pointer-events-none" />
+
       {/* Graffiti Divider */}
       <div className="absolute top-0 left-0 w-full h-16 sm:h-24 bg-white/5 flex items-center justify-center overflow-hidden">
         <div className="whitespace-nowrap flex gap-6 sm:gap-12 text-ripple-pink/20 font-display text-3xl sm:text-6xl opacity-30 select-none">
