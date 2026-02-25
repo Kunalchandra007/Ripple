@@ -117,6 +117,15 @@ export const EVENTS: Event[] = [
     image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028952/Udaan_hv2r4w.png',
     day: 2,
     time: '1:00 PM'
+  },
+  {
+    id: '11',
+    name: 'ORGANUM DONUM',
+    category: 'Society',
+    description: 'Society event focused on awareness, community, and impact.',
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028926/Societies__event_RIPPLE_26__20260221_061129_0000_amlhmi.png',
+    day: 2,
+    time: '3:00 PM'
   }
 ];
 
