@@ -3,6 +3,7 @@ import { Menu, X, Instagram, Mail, Phone, MapPin, ChevronDown, ExternalLink, Tic
 import React, { useState, useEffect } from 'react';
 import Lightning from './Lightning';
 import Squares from './Squares';
+import DomeGallery from './DomeGallery';
 import Dock from './Dock';
 import Balatro from './Balatro';
 
@@ -398,115 +399,43 @@ export const Schedule = () => {
 };
 
 export const Gallery = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const optimizeCloudinary = (src: string) =>
+    src.replace(
+      '/upload/',
+      window.matchMedia('(max-width: 768px)').matches
+        ? '/upload/f_auto,q_auto:eco,dpr_auto,w_720/'
+        : '/upload/f_auto,q_auto:good,dpr_auto,w_1200/'
+    );
 
   const galleryImages = [
-    '/gallery/gyg.png',
-    '/gallery/Screenshot at 2023-11-10 06-06-51.png',
-    '/gallery/Screenshot at 2023-11-10 06-07-35.png',
-    '/gallery/Screenshot at 2023-11-10 06-12-06.png',
-    '/gallery/Screenshot at 2023-11-10 06-14-44.png',
-    '/gallery/Screenshot at 2023-11-10 06-15-16.png',
-    '/gallery/Screenshot at 2023-11-10 06-17-03.png',
-    '/gallery/Screenshot at 2023-11-10 06-17-35.png',
-    '/gallery/Screenshot at 2023-11-10 06-18-05.png',
-    '/gallery/Screenshot at 2023-11-10 06-20-49.png',
-    '/gallery/Screenshot at 2023-11-10 06-21-28.png',
-    '/gallery/Screenshot at 2023-11-10 06-22-13.png',
-    '/gallery/Screenshot at 2023-11-10 06-23-15.png',
-    '/gallery/Screenshot at 2023-11-10 06-23-38.png',
-    '/gallery/Screenshot at 2023-11-10 06-24-03.png',
-    '/gallery/Screenshot at 2023-11-10 06-24-19.png',
-    '/gallery/Screenshot at 2023-11-10 06-26-10.png',
-    '/gallery/Screenshot at 2023-11-10 06-26-53.png',
-    '/gallery/Screenshot at 2023-11-10 06-27-15.png',
-    '/gallery/Screenshot at 2023-11-10 06-27-58.png',
-  ];
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % galleryImages.length);
-    }, 3500);
-    return () => window.clearInterval(timer);
-  }, [galleryImages.length]);
-
-  const goPrev = () => {
-    setActiveIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
-  };
-
-  const goNext = () => {
-    setActiveIndex((prev) => (prev + 1) % galleryImages.length);
-  };
+    'https://res.cloudinary.com/dgmwtonil/image/upload/v1772011665/Screenshot_at_2023-11-10_06-27-58_kqacuq.png',
+    'https://res.cloudinary.com/dgmwtonil/image/upload/v1772011647/Screenshot_at_2023-11-10_06-23-38_yd4ekq.png',
+    'https://res.cloudinary.com/dgmwtonil/image/upload/v1772011624/Screenshot_at_2023-11-10_07-51-57_gbxdwh.png',
+    'https://res.cloudinary.com/dgmwtonil/image/upload/v1772011635/Screenshot_at_2023-11-10_06-15-16_fqkbjb.png',
+    'https://res.cloudinary.com/dgmwtonil/image/upload/v1772011601/Screenshot_at_2023-11-10_06-17-03_fkfecc.png',
+    'https://res.cloudinary.com/dgmwtonil/image/upload/v1772011593/Screenshot_at_2023-11-10_06-07-35_pplu5h.png',
+    'https://res.cloudinary.com/dgmwtonil/image/upload/v1772012089/Screenshot_at_2023-11-10_07-55-53_mcn1fr.png',
+    'https://res.cloudinary.com/dgmwtonil/image/upload/v1772012115/Screenshot_at_2023-11-10_06-17-35_xfgpio.png',
+    'https://res.cloudinary.com/dgmwtonil/image/upload/v1772012120/gyg_bv5p89.png',
+    'https://res.cloudinary.com/dgmwtonil/image/upload/v1772011665/Screenshot_at_2023-11-10_06-27-58_kqacuq.png',
+  ].map(optimizeCloudinary);
 
   return (
     <section className="relative py-16 sm:py-24 px-4 sm:px-6 max-w-full mx-auto bg-black">
-      {/* Background Video */}
-      <div className="absolute inset-0 z-[2] overflow-hidden pointer-events-none">
-        <video
-          className="w-full h-full object-cover opacity-75"
-          src="https://res.cloudinary.com/dgmwtonil/video/upload/q_auto:eco,f_auto,vc_auto/v1771952344/vdobg_yhogbz.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-        />
-        <div className="absolute inset-0 bg-black/20" />
-      </div>
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-35 pointer-events-none"
+        style={{ backgroundImage: "url('/bgforgallery.jpg')" }}
+      />
+      <div className="absolute inset-0 z-0 bg-black/35 pointer-events-none" />
 
       <h2 className="relative z-10 text-4xl sm:text-5xl md:text-7xl font-heading text-center mb-10 sm:mb-16">GLIMPSE OF PREVIOUS RIPPLE</h2>
 
-      <div className="relative z-10 mx-auto max-w-6xl">
-        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/20 bg-black/30 backdrop-blur-sm">
-          <div className="relative aspect-[16/10] sm:aspect-[16/9]">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={galleryImages[activeIndex]}
-                src={galleryImages[activeIndex]}
-                alt={`Ripple gallery slide ${activeIndex + 1}`}
-                className="absolute inset-0 w-full h-full object-cover"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                loading="lazy"
-                decoding="async"
-              />
-            </AnimatePresence>
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
-
-            <button
-              type="button"
-              onClick={goPrev}
-              className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/50 text-white border border-white/20 hover:bg-black/70 transition"
-              aria-label="Previous image"
-            >
-              &#8249;
-            </button>
-            <button
-              type="button"
-              onClick={goNext}
-              className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/50 text-white border border-white/20 hover:bg-black/70 transition"
-              aria-label="Next image"
-            >
-              &#8250;
-            </button>
-
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
-              {galleryImages.map((_, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => setActiveIndex(idx)}
-                  className={`h-2.5 rounded-full transition-all ${idx === activeIndex ? 'w-8 bg-ripple-cyan' : 'w-2.5 bg-white/50 hover:bg-white/80'}`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
+      <div className="relative z-10 min-h-[360px] sm:min-h-[500px] md:min-h-[600px]">
+        <DomeGallery
+          images={galleryImages}
+          grayscale={false}
+          imageBorderRadius="20px"
+        />
       </div>
     </section>
   );
