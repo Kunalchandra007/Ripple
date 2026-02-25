@@ -1,0 +1,3 @@
+.text-pressure-title span {
+  will-change: font-variation-settings, opacity;
+}

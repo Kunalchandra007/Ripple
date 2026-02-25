@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&family=Bebas+Neue&family=Poppins:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Anton", sans-serif;
+  --font-heading: "Bebas Neue", sans-serif;
+  --font-sans: "Poppins", "Montserrat", sans-serif;
+
+  --color-ripple-black: #000000;
+  --color-ripple-pink: #ff008c;
+  --color-ripple-cyan: #00f5ff;
+  --color-ripple-purple: #7b2ff7;
+  --color-ripple-green: #39ff14;
+}
+
+@layer base {
+  body {
+    @apply bg-ripple-black text-white font-sans selection:bg-ripple-pink selection:text-white;
+  }
+}
+
+@layer utilities {
+  .neon-glow-pink {
+    text-shadow: 0 0 10px rgba(255, 0, 140, 0.8), 0 0 20px rgba(255, 0, 140, 0.4);
+  }
+  .neon-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.8), 0 0 20px rgba(0, 245, 255, 0.4);
+  }
+  .neon-border-pink {
+    box-shadow: 0 0 10px rgba(255, 0, 140, 0.5), inset 0 0 5px rgba(255, 0, 140, 0.2);
+  }
+  .neon-border-cyan {
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.5), inset 0 0 5px rgba(0, 245, 255, 0.2);
+  }
+  .glass {
+    @apply bg-black/40 backdrop-blur-md border border-white/10;
+  }
+  .graffiti-text {
+    @apply font-display uppercase tracking-tighter;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-ripple-black;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-ripple-pink rounded-full;
+  box-shadow: 0 0 10px #ff008c;
+}
