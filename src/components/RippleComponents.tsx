@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Instagram, Mail, Phone, MapPin, ChevronDown, ExternalLink, Ticket, Home, Calendar, Users, Award } from 'lucide-react';
+import { Menu, X, Instagram, Mail, Phone, MapPin, ChevronDown, Ticket, Home, Calendar, Users, Award } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import Lightning from './Lightning';
 import Squares from './Squares';
@@ -16,116 +16,542 @@ export interface Event {
   category: string;
   description: string;
   image: string;
+  registerUrl: string;
+  literaryType?: string;
   day: 1 | 2 | 3;
   time: string;
 }
 
 // --- Constants ---
-export const CATEGORIES = ['All', 'Dance', 'Music', 'Art', 'Cultural', 'Society'];
+export const CATEGORIES = [
+  'All',
+  'Art',
+  'Dance',
+  'Drama',
+  'Fashion',
+  'Film Making',
+  'Informal',
+  'Literary',
+  'Mental Health',
+  'Music',
+  'Poetry',
+  'Photography',
+  'Welfare'
+];
+
+const BLANK_POSTER =
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 800'><rect width='600' height='800' fill='%230a0a0a'/><rect x='18' y='18' width='564' height='764' fill='none' stroke='%23333333' stroke-width='3'/><text x='300' y='360' fill='%23ffffff' font-family='Arial, sans-serif' font-size='58' font-weight='700' text-anchor='middle'>POSTER</text><text x='300' y='440' fill='%23ffffff' font-family='Arial, sans-serif' font-size='58' font-weight='700' text-anchor='middle'>COMING SOON</text></svg>";
 
 export const EVENTS: Event[] = [
-  // Celeste Events
+  // Art
   {
     id: '1',
-    name: 'MUDRA',
-    category: 'Dance',
-    description: 'Classical and contemporary dance competition showcasing grace and expression.',
-    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028806/Mudra_lr2obz.png',
+    name: 'POT O PAINT',
+    category: 'Art',
+    description: '[Pot painting Competition]',
+    image: '/events/Art/Pot o paint.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSe-UkFluzVVC6hMuw7Bj18UhAsVnwhX-9SQ3dcrGJAU702Jdw/viewform',
     day: 1,
-    time: '2:00 PM'
+    time: 'TBA'
   },
   {
     id: '2',
-    name: 'NAMHYA',
-    category: 'Dance',
-    description: 'Traditional dance forms celebrating cultural heritage.',
-    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772014350/Namhya_tovxg7.png',
+    name: 'RANG E BOTTLE',
+    category: 'Art',
+    description: '[Bottle painting Competition]',
+    image: '/events/Art/Rang e bottle.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScrjnoJVB9ZQ53AFUg58hu4J4g-YVCFZdIV5ElupArP2HRVFg/viewform',
     day: 1,
-    time: '4:00 PM'
+    time: 'TBA'
   },
-  // Inaayat Events
   {
     id: '3',
-    name: 'ALANKRIT',
-    category: 'Cultural',
-    description: 'Cultural extravaganza celebrating diversity and tradition.',
-    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772014357/Alankrit_jhnijw.png',
-    day: 2,
-    time: '11:00 AM'
+    name: 'TOTE ALLY CREATIVE',
+    category: 'Art',
+    description: '[Tote bag painting Competition]',
+    image: '/events/Art/Tote ally creative.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCSwSpFFu_ovyawhfST6vbyjz_dNUNCpE5X-UzNMr-9YrILw/viewform',
+    day: 1,
+    time: 'TBA'
   },
+  // Dance
   {
     id: '4',
-    name: 'NAVRAS',
-    category: 'Art',
-    description: 'Artistic expression through the nine emotions of classical arts.',
-    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028854/Navras_e5ktao.png',
-    day: 2,
-    time: '3:00 PM'
+    name: 'MUDRA',
+    category: 'Dance',
+    description: '[Duo dance Competition]',
+    image: '/events/Dance/Mudra.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeTMZoPaoCPTDvrVHxCrtUO3AHqM9WKe9GyX58tP4i1HN6Tsg/viewform',
+    day: 1,
+    time: 'TBA'
   },
-  // Plexus Events
   {
     id: '5',
-    name: 'BOB',
-    category: 'Music',
-    description: 'Battle of Bands - Where musical legends are born.',
-    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028680/Bob_vsuvin.png',
+    name: 'NAMHYA',
+    category: 'Dance',
+    description: '[Solo dance Competition]',
+    image: '/events/Dance/Namhya.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfIBI22yGMT-e70U-CzbRjwzBvoufpGL6ciz0rBKeeAh5dvEA/viewform?usp=header',
     day: 1,
-    time: '6:00 PM'
+    time: 'TBA'
   },
   {
     id: '6',
-    name: 'EKAGRATA',
-    category: 'Music',
-    description: 'Solo musical performance showcasing individual talent.',
-    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028731/Ekagrata_hzpfar.png',
-    day: 2,
-    time: '5:00 PM'
+    name: 'NRITYANJALI',
+    category: 'Dance',
+    description: '[Group dance Competition]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfricskuwFBGG4pTS5wM82YA1c-wSR5PTwyHzEV3ILWPvzU0A/viewform',
+    day: 1,
+    time: 'TBA'
   },
   {
     id: '7',
-    name: 'LYRICA SOLISTICA',
-    category: 'Music',
-    description: 'Solo singing competition for melodious voices.',
-    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028763/Lyrica_solistica_z0d5oo.png',
-    day: 3,
-    time: '2:00 PM'
+    name: 'RETRO REMIX',
+    category: 'Dance',
+    description: '[Online reel making Competition]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfwTaakwVhUlSzXz04O2iz5FqHfeP9SZtDDWHm5Pg9cxbTXEA/viewform',
+    day: 1,
+    time: 'TBA'
   },
+  // Drama
   {
     id: '8',
-    name: 'SWARNABHUTI',
-    category: 'Music',
-    description: 'Classical music competition celebrating traditional melodies.',
-    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772014351/Swarnabhuti_bmdvat.png',
-    day: 3,
-    time: '4:00 PM'
+    name: 'DIALOGUEBAAZI',
+    category: 'Drama',
+    description: '[Online script writing Competition]',
+    image: '/events/Drama/Dialoguebaazi.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScSQlxxNR5qA2LCDTb8dH0jQlcIcHf7xx-9gduxkm3CNl6CjA/viewform',
+    day: 1,
+    time: 'TBA'
   },
-  // Swouc Events
   {
     id: '9',
-    name: 'RANG E KALASH',
-    category: 'Cultural',
-    description: 'Colorful cultural celebration with traditional performances.',
-    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028889/Rang_e_kalash_wgyxoq.png',
+    name: 'KASHMAKASH',
+    category: 'Drama',
+    description: '[Nukkad natak Competition]',
+    image: '/events/Drama/Kashmakash.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeuF8qhT11p0_28X56GXEPQc5fGMwGMfHUszXALkrrch25tg/viewform',
     day: 1,
-    time: '10:00 AM'
+    time: 'TBA'
   },
   {
     id: '10',
-    name: 'UDAAN',
-    category: 'Society',
-    description: 'Social awareness event promoting community welfare.',
-    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028952/Udaan_hv2r4w.png',
-    day: 2,
-    time: '1:00 PM'
+    name: 'SARTHAK',
+    category: 'Drama',
+    description: '[Mono/Duet act Competition]',
+    image: '/events/Drama/Sarthak.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScCA_jfXgU1DH9IVWM1BVxWwF7fKH-TiRa5g6_ymEAcebyCiw/viewform',
+    day: 1,
+    time: 'TBA'
   },
+  // Fashion
   {
     id: '11',
-    name: 'ORGANUM DONUM',
-    category: 'Society',
-    description: 'Society event focused on awareness, community, and impact.',
-    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772028926/Societies__event_RIPPLE_26__20260221_061129_0000_amlhmi.png',
-    day: 2,
-    time: '3:00 PM'
+    name: 'ADIRA',
+    category: 'Fashion',
+    description: '[The catwalk carnival]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSe3c46Bj3xWx2YVWjd_VQ_P4b7Bxll6zRu6lR7tQppMFG5irA/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '12',
+    name: 'ALANKRIT',
+    category: 'Fashion',
+    description: '[Placeholder details pending]',
+    image: '/events/Fashion/Alankrit.png',
+    registerUrl: '#',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '13',
+    name: 'NAVRAS',
+    category: 'Fashion',
+    description: '[Online makeup/portfolio Competition]',
+    image: '/events/Fashion/Navras.png',
+    registerUrl: '#',
+    day: 1,
+    time: 'TBA'
+  },
+  // Film Making
+  {
+    id: '14',
+    name: 'MANZAR',
+    category: 'Film Making',
+    description: '[On spot filmmaking Competition]',
+    image: '/events/Film Making/Manzar.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfyXX64NJvk_a4vLeLcnUaT7Xs0_hu-6fnZ9fF1Mdi6e-El1w/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '15',
+    name: 'NAZAARA',
+    category: 'Film Making',
+    description: '[Online film submission Competition]',
+    image: '/events/Film Making/Nazaara.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScbOdpWR4JyeunBwibsY_JZvb39JbQgLGWd9e5S3seiVzoMlg/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  // Informal
+  {
+    id: '16',
+    name: "RIPPLE'S GOT TALENT",
+    category: 'Informal',
+    description: '[Informal event]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeBv1xE_bYVO2IBClXEaXmNuXxcH3zbvWT-bl47FWd2vZD_yA/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '17',
+    name: 'THE GREAT GAME OF TREASURE',
+    category: 'Informal',
+    description: '[Informal event]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSc2suOrqcxNh3-MFzn5gy_c06ha-7pLSyArhqvlfLIHNF91sA/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '18',
+    name: 'HOGATHON',
+    category: 'Informal',
+    description: '[Informal event]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfVm9STpx73vYRbn8zaJAYrjzR1fd7enHX1DwcCv7dVhVHXbA/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '19',
+    name: "THE TRAITOR'S CHAIR",
+    category: 'Informal',
+    description: '[Informal event]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfhPuldI49xjef1A3XXXjL1YcidWrSJvgOxpXt6fLZmN7rCw/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '20',
+    name: 'BEG BORROW STEAL',
+    category: 'Informal',
+    description: '[Informal event]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfcQk8uINGbxJWSICOrtnSD8vb_sBb5CQJUXoQpaH8J4Myysw/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '21',
+    name: 'DARE TO DART',
+    category: 'Informal',
+    description: '[Informal event]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScNeY41iNuQowod100imWfbTKRxfOEUIrngrG4spAZh1Sl8AqA/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '22',
+    name: "ELEVATOR'S PITCH",
+    category: 'Informal',
+    description: '[Informal event]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScQX9TI2ei5vJQ71UCKmlN1SH9JxG4ja3Ovi-L_Ur-JHaHJ_Q/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '23',
+    name: 'PETALS & SECRETS',
+    category: 'Informal',
+    description: '[Anonymous rose and anonymous compliments]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfdJP7QxJXxkKNC7x78jvRj_P16kNRJzscBndoXbCbS9pA9g/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '24',
+    name: 'BLIND TRUST WALK',
+    category: 'Informal',
+    description: '[Informal event]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSd4R868La4O6nIRQoFmuVIVEswM7xaY0l59cHDrV0p3XBCsQ/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '25',
+    name: 'MEMED',
+    category: 'Informal',
+    description: '[Informal event]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfluWKe1g2wg8qpFPY2pAGIJTb6c9Ixymn-yTIp9a8wWrCTuQ/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '26',
+    name: "TEACHER'S CARNIVAL",
+    category: 'Informal',
+    description: '[Details pending]',
+    image: BLANK_POSTER,
+    registerUrl: '#',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '27',
+    name: 'PROM NIGHT',
+    category: 'Informal',
+    description: '[Details pending]',
+    image: BLANK_POSTER,
+    registerUrl: '#',
+    day: 1,
+    time: 'TBA'
+  },
+  // Literary
+  {
+    id: '28',
+    name: 'IN THE MOOD FOR HINTS',
+    category: 'Literary',
+    literaryType: 'QUIZ',
+    description: '[A melas flavoured general quiz]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSc1n5Zx7RWIbtdnaA6GohJvcAChu_8tfMRWSEfyzZScqOUwgg/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '29',
+    name: 'ABSOLUTE CINEMA QUIZ',
+    category: 'Literary',
+    literaryType: 'QUIZ',
+    description: '[A movies quiz]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfiEA2M3qXoqNZf0BdJo3-FZ-n1VoKSK4ZJcFUgCLgB_9pQQ/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '30',
+    name: 'CHAI CHARCHA AUR CHATURAI',
+    category: 'Literary',
+    literaryType: 'QUIZ',
+    description: '[India quiz]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeRHQw7i4gl_8E9RQQ5Zr6HHMXfTlCgGtm_4Kq-yn2sJ_fRaw/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '31',
+    name: 'QUIZZED IN MY PANTS',
+    category: 'Literary',
+    literaryType: 'QUIZ',
+    description: '[A Fandom quiz]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfdvQJzZYwQVE3cmdWKL4zUzz8zyfI_e1HeVmXPiVCxg3nMAA/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '32',
+    name: 'JAM',
+    category: 'Literary',
+    literaryType: 'SPEAKING',
+    description: '[Just a minute]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScTtqK-4X_-Ti8rJ1T1Tt3qWLawXXeIZ0bGTFYJp_1ILeL1aA/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '33',
+    name: 'SENATUS',
+    category: 'Literary',
+    literaryType: 'SPEAKING',
+    description: '[Multi level debate]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeqa-zeM9f5eGdioNdYQolAvluRgP2XbzKB5s1guv8zA5OMgA/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '34',
+    name: 'CRISIS COMMITTEE',
+    category: 'Literary',
+    literaryType: 'SPEAKING',
+    description: '[Nepal interim governance crisis committee]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSe2r2dQku2ea6WCIE3HvY8S6MzwcG0dgSD9UABYqdmHdjFICA/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '35',
+    name: 'TALESMITH',
+    category: 'Literary',
+    literaryType: 'WRITING',
+    description: '[Online creative writing]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScYsOo4AwZ2zRFrcPoAtXoVVo_6az1EAUmOIuK6DkNDlapmdA/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  // Mental Health
+  {
+    id: '36',
+    name: 'MIND AND MAPS',
+    category: 'Mental Health',
+    description: '[Art events and mental health talks]',
+    image: '/events/Mental Health/Mind and maps.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSe65c8xwiR21sNwxziHDJ1h1Qho03yv2qE-XUNGLeIWSbyPgQ/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  // Music
+  {
+    id: '37',
+    name: 'VALHALLA',
+    category: 'Music',
+    description: '[Battle of bands]',
+    image: '/events/Music/Bob.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdrckovuXEM7-IJdP6BxTMjHbbP5vNQNTFWURmMY-8kvUxcGg/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '38',
+    name: 'EKAGRATA',
+    category: 'Music',
+    description: '[Solo Indian singing Competition]',
+    image: '/events/Music/Ekagrata.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdez1vsO9HQGcglX4bJYy87hzWcgGIZ0AbgjybCMex_LfB4Jg/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '39',
+    name: 'LYRICA SOLISTICA',
+    category: 'Music',
+    description: '[Solo western singing Competition]',
+    image: '/events/Music/Lyrica solistica.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeGoD-NOPs2C3N4LI_Sx3a6xfocseQz_hEukOh3TQrh2GvB3A/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '40',
+    name: 'SWARNABHUTI',
+    category: 'Music',
+    description: '[Solo instrumental Competition]',
+    image: '/events/Music/Swarnabhuti.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdFC_SQfgN6GybrdBjBV6MIUfLEXzD-jnjJUoslqnGja0g/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  // Poetry
+  {
+    id: '41',
+    name: 'IQRAAR E ALFAAZ',
+    category: 'Poetry',
+    description: '[Poetry Competition]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeHUEHQ79RJf-Mjc4VLppe0Af6L5CvpVkEprDZiYQOJpe5Bng/viewform?usp=sharing&ouid=111344145043972777353',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '42',
+    name: 'SHADOWED SCRIPT',
+    category: 'Poetry',
+    description: '[A blackout poetry Competition]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdMmmVZqCnuDQBnZr6YD6om7QWj1NjOoNkziVRjimLl87OVA/viewform?usp=sharing&ouid=111344145043972777353',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '43',
+    name: 'RASARANG',
+    category: 'Poetry',
+    description: '[Online poetry writing Competition]',
+    image: BLANK_POSTER,
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeFowU9Cjg6c1W2eSNhVnOtjBS58xURgYIiuSaFTBA2hWXqBg/viewform?usp=sharing&ouid=111344145043972777353',
+    day: 1,
+    time: 'TBA'
+  },
+  // Photography
+  {
+    id: '44',
+    name: 'ALOKA',
+    category: 'Photography',
+    description: '[On spot photography Competition]',
+    image: '/events/Photography/Aloka.jpg',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScM9Yrqe4lWBbmW-xV7jSKOYTItMWZHreuyOZH4rwYzWyF7Q/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '45',
+    name: 'LAMHA',
+    category: 'Photography',
+    description: '[Event photography]',
+    image: '/events/Photography/Lamha.jpg',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfDS6Q5mvdWe5GzedapUUBaXpdaCqdWMJbEv3rGqPf94xV9Rg/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '46',
+    name: 'PRATIBIMBA',
+    category: 'Photography',
+    description: '[Online photography Competition]',
+    image: '/events/Photography/Pratibimba.jpg',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCGxkXQYuVJZgF3YD3yju6g1-PSw-BiFOFiV8kwV30P2RA/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  // Welfare
+  {
+    id: '47',
+    name: 'RANG E KALASH',
+    category: 'Welfare',
+    description: '[Cultural pot painting Competition]',
+    image: '/events/Welfare/Rang e kalash.png',
+    registerUrl: '#',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '48',
+    name: 'TRANSCEND',
+    category: 'Welfare',
+    description: '[Poster making Competition]',
+    image: '/events/Welfare/Societies_ event (RIPPLE_26)_20260221_061129_0000.png',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeG6_tNyJ_EST03ali9880xQwb9HoFORSsAwGPZ4ySU4X3Imw/viewform',
+    day: 1,
+    time: 'TBA'
+  },
+  {
+    id: '49',
+    name: 'UDAAN',
+    category: 'Welfare',
+    description: '[Quiz Competition]',
+    image: '/events/Welfare/Udaan.png',
+    registerUrl: '#',
+    day: 1,
+    time: 'TBA'
   }
 ];
 
@@ -531,7 +957,34 @@ export const Footer = () => {
 export const EventsPage = () => {
   const [filter, setFilter] = useState('All');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const filteredEvents = filter === 'All' ? EVENTS : EVENTS.filter(e => e.category === filter);
+  const [literaryFilter, setLiteraryFilter] = useState('All Literary');
+  const [isLiteraryDropdownOpen, setIsLiteraryDropdownOpen] = useState(false);
+
+  const literarySubtopics = [
+    'All Literary',
+    ...Array.from(
+      new Set(
+        EVENTS.filter((event) => event.category === 'Literary')
+          .map((event) => event.literaryType || event.name)
+      )
+    )
+  ];
+
+  const filteredEvents = EVENTS.filter((event) => {
+    if (filter === 'All') {
+      return true;
+    }
+
+    if (filter !== 'Literary') {
+      return event.category === filter;
+    }
+
+    if (literaryFilter === 'All Literary') {
+      return event.category === 'Literary';
+    }
+
+    return event.category === 'Literary' && (event.literaryType || event.name) === literaryFilter;
+  });
 
   return (
     <div className="relative min-h-screen">
@@ -555,36 +1008,83 @@ export const EventsPage = () => {
           <p className="text-ripple-cyan font-heading text-lg sm:text-2xl tracking-[0.15em] sm:tracking-widest mt-4">CHOOSE YOUR BATTLEGROUND</p>
         </div>
 
-        {/* Custom Neon Dropdown */}
-        <div className="relative w-full md:w-auto">
-          <button 
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="flex items-center gap-4 px-5 sm:px-6 py-3 glass rounded-xl border-ripple-cyan/30 hover:border-ripple-cyan transition-all w-full md:min-w-[240px] justify-between"
-          >
-            <span className="font-heading text-lg sm:text-xl tracking-[0.1em] sm:tracking-widest">{filter === 'All' ? 'SORT BY CATEGORY' : filter.toUpperCase()}</span>
-            <ChevronDown className={`transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
-          </button>
-          
-          <AnimatePresence>
-            {isDropdownOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                className="absolute top-full right-0 mt-2 w-full glass rounded-xl overflow-hidden z-20"
+        {/* Category + Literary Subtopic Dropdowns */}
+        <div className="w-full md:w-auto flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="relative w-full md:w-auto">
+            <button 
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="flex items-center gap-4 px-5 sm:px-6 py-3 glass rounded-xl border-ripple-cyan/30 hover:border-ripple-cyan transition-all w-full md:min-w-[240px] justify-between"
+            >
+              <span className="font-heading text-lg sm:text-xl tracking-[0.1em] sm:tracking-widest">{filter === 'All' ? 'SORT BY CATEGORY' : filter.toUpperCase()}</span>
+              <ChevronDown className={`transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+            </button>
+            
+            <AnimatePresence>
+              {isDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute top-full right-0 mt-2 w-full glass rounded-xl overflow-hidden z-20 max-h-[60vh] overflow-y-auto overscroll-contain scroll-smooth"
+                >
+                  {CATEGORIES.map((cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => {
+                        setFilter(cat);
+                        if (cat !== 'Literary') {
+                          setLiteraryFilter('All Literary');
+                          setIsLiteraryDropdownOpen(false);
+                        }
+                        setIsDropdownOpen(false);
+                      }}
+                      className="w-full text-left px-6 py-3 hover:bg-ripple-cyan/20 hover:text-ripple-cyan transition-colors font-heading text-lg tracking-widest"
+                    >
+                      {cat.toUpperCase()}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {filter === 'Literary' && (
+            <div className="relative w-full md:w-auto">
+              <button
+                onClick={() => setIsLiteraryDropdownOpen(!isLiteraryDropdownOpen)}
+                className="flex items-center gap-4 px-5 sm:px-6 py-3 glass rounded-xl border-ripple-pink/30 hover:border-ripple-pink transition-all w-full md:min-w-[260px] justify-between"
               >
-                {CATEGORIES.map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => { setFilter(cat); setIsDropdownOpen(false); }}
-                    className="w-full text-left px-6 py-3 hover:bg-ripple-cyan/20 hover:text-ripple-cyan transition-colors font-heading text-lg tracking-widest"
+                <span className="font-heading text-lg sm:text-xl tracking-[0.1em] sm:tracking-widest">
+                  {literaryFilter.toUpperCase()}
+                </span>
+                <ChevronDown className={`transition-transform ${isLiteraryDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              <AnimatePresence>
+                {isLiteraryDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full right-0 mt-2 w-full glass rounded-xl overflow-hidden z-20 max-h-[60vh] overflow-y-auto overscroll-contain scroll-smooth"
                   >
-                    {cat.toUpperCase()}
-                  </button>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
+                    {literarySubtopics.map((topic) => (
+                      <button
+                        key={topic}
+                        onClick={() => {
+                          setLiteraryFilter(topic);
+                          setIsLiteraryDropdownOpen(false);
+                        }}
+                        className="w-full text-left px-6 py-3 hover:bg-ripple-pink/20 hover:text-ripple-pink transition-colors font-heading text-lg tracking-widest"
+                      >
+                        {topic.toUpperCase()}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )}
         </div>
       </div>
 
@@ -607,14 +1107,24 @@ export const EventsPage = () => {
             
             <div className="p-5 sm:p-8">
               <h3 className="text-2xl sm:text-3xl font-heading mb-2 group-hover:text-ripple-pink transition-colors">{event.name}</h3>
-              <p className="text-white/50 text-sm mb-6 line-clamp-2">{event.description}</p>
+              <p className="text-white/70 text-base sm:text-lg font-medium italic tracking-wide mb-6 line-clamp-2">
+                {event.description.replace(/^\s*\[|\]\s*$/g, '')}
+              </p>
               
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <button className="flex-1 bg-ripple-pink py-3 rounded-xl font-heading text-lg sm:text-xl tracking-[0.1em] sm:tracking-widest hover:bg-ripple-pink/80 transition-all shadow-[0_0_15px_rgba(255,0,140,0.3)]">
+              <div className="flex flex-col gap-3">
+                <a
+                  href={event.registerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 bg-ripple-pink py-3 rounded-xl font-heading text-lg sm:text-xl tracking-[0.1em] sm:tracking-widest hover:bg-ripple-pink/80 transition-all shadow-[0_0_15px_rgba(255,0,140,0.3)] text-center"
+                >
                   REGISTER
-                </button>
-                <button className="px-4 py-3 border border-white/10 rounded-xl hover:bg-white/5 transition-colors flex items-center justify-center">
-                  <ExternalLink size={20} />
+                </a>
+                <button
+                  type="button"
+                  className="w-full py-3 rounded-xl border border-white/20 font-heading text-base sm:text-lg tracking-[0.1em] sm:tracking-widest text-white/90 hover:bg-white/5 transition-colors"
+                >
+                  RULE BOOK
                 </button>
               </div>
             </div>
