@@ -39,6 +39,9 @@ export const CATEGORIES = [
   'Welfare'
 ];
 
+const INITIAL_VISIBLE_EVENTS = 9;
+const LOAD_MORE_EVENTS_STEP = 9;
+
 const BLANK_POSTER =
   "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 800'><rect width='600' height='800' fill='%230a0a0a'/><rect x='18' y='18' width='564' height='764' fill='none' stroke='%23333333' stroke-width='3'/><text x='300' y='360' fill='%23ffffff' font-family='Arial, sans-serif' font-size='58' font-weight='700' text-anchor='middle'>POSTER</text><text x='300' y='440' fill='%23ffffff' font-family='Arial, sans-serif' font-size='58' font-weight='700' text-anchor='middle'>COMING SOON</text></svg>";
 
@@ -959,6 +962,7 @@ export const EventsPage = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [literaryFilter, setLiteraryFilter] = useState('All Literary');
   const [isLiteraryDropdownOpen, setIsLiteraryDropdownOpen] = useState(false);
+  const [visibleEventsCount, setVisibleEventsCount] = useState(INITIAL_VISIBLE_EVENTS);
 
   const literarySubtopics = [
     'All Literary',
@@ -985,6 +989,13 @@ export const EventsPage = () => {
 
     return event.category === 'Literary' && (event.literaryType || event.name) === literaryFilter;
   });
+
+  useEffect(() => {
+    setVisibleEventsCount(INITIAL_VISIBLE_EVENTS);
+  }, [filter, literaryFilter]);
+
+  const visibleEvents = filteredEvents.slice(0, visibleEventsCount);
+  const hasMoreEvents = visibleEventsCount < filteredEvents.length;
 
   return (
     <div className="relative min-h-screen">
@@ -1089,7 +1100,7 @@ export const EventsPage = () => {
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-        {filteredEvents.map((event) => (
+        {visibleEvents.map((event, eventIndex) => (
           <motion.div
             layout
             key={event.id}
@@ -1099,7 +1110,16 @@ export const EventsPage = () => {
             className="glass rounded-3xl overflow-hidden group border-t-4 border-t-ripple-purple"
           >
             <div className="relative h-52 sm:h-64 overflow-hidden bg-black/50">
-              <img src={event.image} alt={event.name} className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" />
+              <img
+                src={event.image}
+                alt={event.name}
+                loading={eventIndex < 6 ? 'eager' : 'lazy'}
+                decoding="async"
+                fetchPriority={eventIndex < 3 ? 'high' : 'low'}
+                width={600}
+                height={800}
+                className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+              />
               <div className="absolute top-4 right-4 bg-ripple-black/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
                 <span className="text-xs font-bold text-ripple-cyan uppercase tracking-widest">{event.category}</span>
               </div>
@@ -1131,6 +1151,17 @@ export const EventsPage = () => {
           </motion.div>
         ))}
       </div>
+      {hasMoreEvents && (
+        <div className="mt-10 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setVisibleEventsCount((count) => count + LOAD_MORE_EVENTS_STEP)}
+            className="px-7 py-3 rounded-xl border border-ripple-cyan/50 text-ripple-cyan font-heading tracking-[0.12em] hover:bg-ripple-cyan/10 transition-colors"
+          >
+            LOAD MORE EVENTS
+          </button>
+        </div>
+      )}
       </div>
     </div>
   );
