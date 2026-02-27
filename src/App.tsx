@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Navbar, Hero, About, Schedule, Gallery, Footer, EventsPage, SponsorsPage, type Page } from './components/RippleComponents';
 
@@ -16,6 +16,10 @@ export default function App() {
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [currentPage]);
 
   if (loading) {
     return (
@@ -54,7 +58,7 @@ export default function App() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Hero onGetTickets={() => setCurrentPage('events')} />
+              <Hero onGetTickets={() => setCurrentPage('br')} />
               
               {/* Scrolling Background for About and Schedule */}
               <div className="relative">
@@ -119,7 +123,7 @@ export default function App() {
         </AnimatePresence>
       </main>
 
-      <Footer />
+      <Footer onGetTickets={() => setCurrentPage('br')} />
 
       {/* Scroll Progress Bar */}
       <ScrollProgress />
@@ -128,50 +132,90 @@ export default function App() {
 }
 
 const CursorGlow = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const supportsDesktopPointer = window.matchMedia('(min-width: 768px) and (pointer: fine)').matches;
+    if (!supportsDesktopPointer) {
+      return;
+    }
+
     let rafId: number | null = null;
-    const handleMouseMove = (e: MouseEvent) => {
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        setMousePos({ x: e.clientX, y: e.clientY });
-      });
+    let latestX = -999;
+    let latestY = -999;
+
+    const applyPosition = () => {
+      rafId = null;
+      if (glowRef.current) {
+        glowRef.current.style.transform = `translate3d(${latestX - 150}px, ${latestY - 150}px, 0)`;
+      }
     };
-    window.addEventListener('mousemove', handleMouseMove);
+
+    const handleMouseMove = (e: MouseEvent) => {
+      latestX = e.clientX;
+      latestY = e.clientY;
+      if (rafId === null) {
+        rafId = requestAnimationFrame(applyPosition);
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      if (rafId) cancelAnimationFrame(rafId);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
     };
   }, []);
 
   return (
-    <motion.div
-      animate={{ x: mousePos.x - 150, y: mousePos.y - 150 }}
-      transition={{ type: 'spring', damping: 30, stiffness: 200, mass: 0.5 }}
+    <div
+      ref={glowRef}
+      style={{ transform: 'translate3d(-999px, -999px, 0)', willChange: 'transform' }}
       className="w-[300px] h-[300px] bg-ripple-pink/5 rounded-full blur-[100px] pointer-events-none"
     />
   );
 };
 
 const ScrollProgress = () => {
-  const [progress, setProgress] = useState(0);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let rafId: number | null = null;
+
+    const updateProgress = () => {
+      rafId = null;
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       const currentProgress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
-      setProgress(currentProgress);
+      if (barRef.current) {
+        barRef.current.style.transform = `scaleX(${currentProgress / 100})`;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const handleScroll = () => {
+      if (rafId === null) {
+        rafId = requestAnimationFrame(updateProgress);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
+    };
   }, []);
 
   return (
     <div className="fixed top-0 left-0 w-full h-1 z-[60] bg-white/5">
-      <motion.div 
+      <div
+        ref={barRef}
         className="h-full bg-ripple-cyan shadow-[0_0_10px_#00f5ff]"
-        style={{ width: `${progress}%` }}
+        style={{ transform: 'scaleX(0)', transformOrigin: 'left center', willChange: 'transform' }}
       />
     </div>
   );

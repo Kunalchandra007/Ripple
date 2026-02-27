@@ -6,6 +6,7 @@ import Squares from './Squares';
 import DomeGallery from './DomeGallery';
 import Dock from './Dock';
 import Balatro from './Balatro';
+import SpotlightCard from './SpotlightCard';
 
 // --- Types ---
 export type Page = 'home' | 'events' | 'sponsors' | 'br';
@@ -55,7 +56,7 @@ export const EVENTS: Event[] = [
     category: 'Academic',
     description: '[Academic event]',
     image: '/events/Academic/Iniquitous.jpg',
-    registerUrl: '#',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeP2rj5ha8BSZE5I81Hvsjx61uD9GRyQZzYFG7mKp3L1ByYJg/viewform',
     rulesUrl: '/events/Academic/Inquitous.pdf',
     day: 1,
     time: 'TBA'
@@ -222,7 +223,7 @@ export const EVENTS: Event[] = [
   // Informal
   {
     id: '16',
-    name: "RIPPLE'S GOT TALENT",
+    name: "RIPPLE'S GOT LATENT",
     category: 'Informal',
     description: '[Informal event]',
     image: "/events/Informal/Ripple's got latent.jpg",
@@ -346,7 +347,7 @@ export const EVENTS: Event[] = [
     category: 'Informal',
     description: '[Details pending]',
     image: '/events/Informal/Prom night.jpg',
-    registerUrl: '#',
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSex26pG86aUQX9RmMJLcc0_Eigiplsn_pXFMEegH_n8xmNChg/viewform',
     rulesUrl: '/events/Informal/Prom night.pdf',
     day: 1,
     time: 'TBA'
@@ -510,9 +511,10 @@ export const EVENTS: Event[] = [
     id: '41',
     name: 'IQRAAR E ALFAAZ',
     category: 'Poetry',
-    description: '[Poetry Competition]',
-    image: BLANK_POSTER,
+    description: '[Spoken word poetry competition]',
+    image: '/events/Poetry/Iqraar-e-Alfaaz.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeHUEHQ79RJf-Mjc4VLppe0Af6L5CvpVkEprDZiYQOJpe5Bng/viewform?usp=sharing&ouid=111344145043972777353',
+    rulesUrl: '/events/Poetry/Iqraar e alfaaz.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -520,9 +522,10 @@ export const EVENTS: Event[] = [
     id: '42',
     name: 'SHADOWED SCRIPT',
     category: 'Poetry',
-    description: '[A blackout poetry Competition]',
-    image: BLANK_POSTER,
+    description: '[Blackout poetry competition]',
+    image: '/events/Poetry/Shadowed Script.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdMmmVzqCnuDQBzNZr6YD6om7QWj1Nj0oNkziVRjjmLI87OVA/viewform?usp=sharing&ouid=111344145043972777353',
+    rulesUrl: '/events/Poetry/Shadowed script.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -530,9 +533,10 @@ export const EVENTS: Event[] = [
     id: '43',
     name: 'RASARANG',
     category: 'Poetry',
-    description: '[Online poetry writing Competition]',
-    image: BLANK_POSTER,
+    description: '[Online poetry writing competition on assigned rasa]',
+    image: '/events/Poetry/Rasrang.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeFowU9Cjg6c1W2eSNhVnOtjBS58xURgYiiuSaFTBA2hWXqBg/viewform?usp=sharing&ouid=111344145043972777353',
+    rulesUrl: '/events/Poetry/Rasrang.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -744,24 +748,32 @@ export const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-heading mb-4 inline-block relative">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-heading mb-6 inline-block relative leading-[0.95]">
             ABOUT RIPPLE
             <div className="absolute -bottom-2 left-0 w-full h-1 bg-ripple-cyan shadow-[0_0_10px_#00f5ff]" />
           </h2>
-          <div className="mt-8 sm:mt-12 space-y-5 sm:space-y-6 text-base sm:text-lg text-white/70 leading-relaxed font-light">
+          <div className="mt-6 sm:mt-8 space-y-5 sm:space-y-6 text-base sm:text-lg text-white/75 leading-relaxed font-body">
             <p>
               The smallest of pebbles, teeniest and tiniest of them all. Yet the water ripples with its fervour endlessly. RIPPLE is the embodiment of the infinite, from the most unexpected sources. It is a small dream to be lost in the ocean of time and yet rippling through your memories, that you spent jumping and laughing, shouting out your favourite lyrics in the cacophonies of a toneless voice, and yet leaving this annual fest with the warmest hearts. RIPPLE is not a list of events, with star nights and competitions. Rather, its an opportunity, to be your best self and better yet- your truest one. Because whatever you may choose to do. IT WILL RIPPLE.
             </p>
-            
-            <ul className="space-y-3 text-sm sm:text-base text-white/80 break-words">
-              <li>• RIPPLE IS THE LARGEST MEDICAL SUMMERFEST IN DELHI WITH A FOOTFALL OF 30,000+ LAST TIME.</li>
-              <li>• WE HAVE HOSTED STARS LIKE MOHIT CHAUHAN, HONEY SINGH, VISHAL SHEKHAR ETC.</li>
-              <li>• OUR LATEST SEASON SHOWED A RECORD CROWD OF 20,000+ STUDENTS IN A SINGLE NIGHT</li>
-              <li>• UCMS IS THE ONLY AND LARGEST INSTITUTION IN EAST DELHI AND ASSOCIATED WITH A HOSPITAL WITH THE HIGHEST FOOTFALL AND SURROUNDING STATES.</li>
-              <li>• WE HAVE A GLORIOUS AND ONE THE LARGEST ALUMINUS NETWORK INCLUDING DR. MAHESH SHARMA(MEMBER OF PARLIAMENT), DGHS, THE DIRECTOR- ICMR, PALASH SEN, LOCAL TRAIN, AND ALSO DR. RAHUL GUPTA (DIRECTOR, DRUGS CONTROL POLICY, USA)</li>
-              <li>• WE HAVE ONE OF THE LARGEST GATHERINGS OF QUALITY STUDENT AND PROFESSIONAL CROWD FROM ACROSS INDIA</li>
-              <li>• WE POSSESS AN EXCELLENT STUDENT SOCIETY CIRCLE WITH BIG AND EFFECTIVE OUTREACH IN LOCAL AND NATIONWIDE AUDIENCE.</li>
-            </ul>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
+              <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+                <p className="text-ripple-cyan text-xl sm:text-2xl font-heading">30,000+</p>
+                <p className="text-white/70 text-xs sm:text-sm tracking-wide">Largest medical summerfest footfall in Delhi</p>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+                <p className="text-ripple-pink text-xl sm:text-2xl font-heading">20,000+</p>
+                <p className="text-white/70 text-xs sm:text-sm tracking-wide">Single-night record crowd in latest season</p>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+                <p className="text-ripple-cyan text-base sm:text-lg font-heading">STAR LEGACY</p>
+                <p className="text-white/70 text-xs sm:text-sm tracking-wide">Mohit Chauhan, Honey Singh, Vishal Shekhar and more</p>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+                <p className="text-ripple-pink text-base sm:text-lg font-heading">PAN-INDIA REACH</p>
+                <p className="text-white/70 text-xs sm:text-sm tracking-wide">Strong alumni network and nationwide student outreach</p>
+              </div>
+            </div>
           </div>
         </motion.div>
 
@@ -787,43 +799,49 @@ export const Schedule = () => {
 
   const scheduleData = {
     1: [
-      { time: '9-4', event: 'Kashmakash' },
-      { time: '9-1', event: 'Solo Instrumental' },
-      { time: '10-1', event: 'Mind and Medium' },
-      { time: '9-1', event: 'Rang-e-Kalash and Magical' },
-      { time: '1-5', event: 'JAM, Gen-Quiz, Blackout Poetry' },
-      { time: '1-5', event: 'Scribble' },
-      { time: '1-5', event: 'Nazara' },
-      { time: '2-7', event: 'Battle Of Bands' },
-      { time: 'Night', event: 'Band Night' }
+      { time: '9 am onwards', event: 'Kashmakash' },
+      { time: '9 am onwards', event: 'Swarnabhuti' },
+      { time: '10 am onwards', event: 'Mind & Maps' },
+      { time: '10 am onwards', event: 'Rang-e-kalash' },
+      { time: '1 pm onwards', event: 'Valhalla' },
+      { time: '1 pm onwards', event: 'Shadpwed Script' },
+      { time: '1 pm onwards', event: 'JAM' },
+      { time: '1 pm onwards', event: "The traitor's chair" },
+      { time: '2 pm onwards', event: 'In the mood for hints' },
+      { time: '2 pm onwards', event: 'Tote-ally Creative' },
+      { time: '3 pm onwards', event: "Elevator's Pitch" },
+      { time: '4 pm onwards', event: 'Prom Night' },
+      { time: 'NIGHT onwards', event: 'BAND NIGHT' }
     ],
     2: [
-      { time: '9-1', event: 'Crisis Committee' },
-      { time: '9-4', event: 'Filler Quiz' },
-      { time: '10-1', event: 'Udaan' },
-      { time: '10-5', event: 'Aloka' },
-      { time: '10-1', event: 'Botella' },
-      { time: '10-5', event: 'Sarthak' },
-      { time: '1-5', event: 'India Quiz' },
-      { time: '2-5', event: 'Husn-e-Nayan' },
-      { time: '10-2', event: 'Nrityanjali' },
-      { time: 'Night', event: 'Fashion Night' }
+      { time: '9-1 onwards', event: 'Crisis Committee' },
+      { time: '9-4 onwards', event: 'Filler Quiz' },
+      { time: '10-1 onwards', event: 'Udaan' },
+      { time: '10-5 onwards', event: 'Aloka' },
+      { time: '10-1 onwards', event: 'Botella' },
+      { time: '10-5 onwards', event: 'Sarthak' },
+      { time: '1-5 onwards', event: 'India Quiz' },
+      { time: '2-5 onwards', event: 'Husn-e-Nayan' },
+      { time: '10-2 onwards', event: 'Nrityanjali' },
+      { time: 'NIGHT onwards', event: 'Fashion Night' }
     ],
     3: [
-      { time: '10-1', event: 'Namhya' },
-      { time: '12-3', event: 'Mudra' },
-      { time: '10-1', event: 'Sapno Ki Udaan' },
-      { time: '9-5', event: 'Manzar' },
-      { time: '10-3', event: 'Sushruta' },
-      { time: '10-12', event: 'Ekagrata' },
-      { time: '12-3', event: 'Lyrica-Solistica' },
-      { time: '10-1', event: 'Tic-Tac-Toe' },
-      { time: '1-5', event: 'Fresco' },
-      { time: '9-1', event: 'MLD' },
-      { time: '1-5', event: 'Iqraar-e-Alfaz' },
-      { time: '9-1', event: 'Fandom Quiz' },
-      { time: '1-5', event: 'Movie Quiz' },
-      { time: 'Night', event: 'Artist Night' }
+      { time: '9 am onwards', event: 'Senatus' },
+      { time: '9 am onwards', event: 'Inquitous' },
+      { time: '9 am onwards', event: 'Quizzed in my pants' },
+      { time: '9 am onwards', event: 'Namhya' },
+      { time: '9 am onwards', event: 'Manzar' },
+      { time: '10 am onwards', event: 'Transcend' },
+      { time: '11 am onwards', event: 'Lyrica solistica' },
+      { time: '11 am onwards', event: 'Mudra' },
+      { time: '11 am onwards', event: 'Udaan' },
+      { time: '11 am onwards', event: 'The Great Game of Treasure' },
+      { time: '12 pm onwards', event: 'Hogathon' },
+      { time: '1 pm onwards', event: 'Iqraar-e-Alfaaz' },
+      { time: '1 pm onwards', event: 'Ekagrata' },
+      { time: '2 pm onwards', event: 'Pot-o-Paint' },
+      { time: '2 pm onwards', event: 'Absolute cinema quiz' },
+      { time: 'NIGHT onwards', event: 'STAR NIGHT' }
     ]
   };
 
@@ -855,30 +873,33 @@ export const Schedule = () => {
           ))}
         </div>
 
+        <SpotlightCard
+          className="rounded-2xl sm:rounded-3xl border-t-4 border-t-ripple-pink"
+          spotlightColor="rgba(0, 245, 255, 0.18)"
+        >
         <motion.div
           key={activeDay}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="glass rounded-2xl sm:rounded-3xl p-4 sm:p-8 border-t-4 border-t-ripple-pink"
+          className="glass rounded-2xl sm:rounded-3xl p-4 sm:p-8"
         >
-          <div className="space-y-4 sm:space-y-6">
+          <div className="max-h-[65vh] overflow-y-auto pr-1 sm:pr-2 space-y-3 sm:space-y-4">
             {scheduleData[activeDay].map((item, idx) => (
-              <div key={idx} className="flex flex-col md:flex-row md:items-center justify-between p-3 sm:p-4 border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors rounded-xl group">
-                <div className="flex items-center gap-3 sm:gap-6">
-                  <span className="font-heading text-xl sm:text-2xl text-ripple-cyan shrink-0">{item.time}</span>
-                  <div>
-                    <h4 className="text-base sm:text-xl font-bold group-hover:text-ripple-pink transition-colors">{item.event}</h4>
-                  </div>
-                </div>
-                <div className="mt-4 md:mt-0">
-                  <button className="text-xs font-bold uppercase tracking-widest px-4 py-2 border border-white/20 rounded-full hover:border-ripple-cyan hover:text-ripple-cyan transition-all">
-                    Remind Me
-                  </button>
-                </div>
+              <div
+                key={idx}
+                className="grid grid-cols-1 md:grid-cols-[280px_1fr] items-center gap-2 md:gap-8 p-4 sm:p-5 rounded-xl bg-black/25 hover:bg-black/35 transition-colors"
+              >
+                <span className="font-heading text-2xl sm:text-3xl md:text-4xl tracking-[0.04em] text-ripple-cyan leading-none">
+                  {item.time}
+                </span>
+                <h4 className="font-heading text-2xl sm:text-3xl md:text-4xl tracking-[0.06em] text-white leading-tight">
+                  {item.event}
+                </h4>
               </div>
             ))}
           </div>
         </motion.div>
+        </SpotlightCard>
       </div>
     </section>
   );
@@ -927,7 +948,7 @@ export const Gallery = () => {
   );
 };
 
-export const Footer = () => {
+export const Footer = ({ onGetTickets }: { onGetTickets?: () => void }) => {
   return (
     <footer id="footer" className="relative bg-black pt-20 sm:pt-24 pb-12 px-4 sm:px-6 overflow-hidden">
       <div
@@ -946,9 +967,25 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 sm:gap-16 relative z-10">
         <div>
           <h3 className="text-3xl sm:text-4xl font-display text-ripple-pink neon-glow-pink mb-4 sm:mb-6">RIPPLE</h3>
-          <p className="text-white/50 leading-relaxed mb-8">
-            The ultimate urban college fest. Experience the energy, the talent, and the neon nights.
-          </p>
+          <div className="mb-8 space-y-1">
+            <p className="text-white/85 text-lg sm:text-xl font-semibold tracking-wide">
+              Experience the Ultimate Medfest.
+            </p>
+            <p className="text-ripple-cyan text-base sm:text-lg font-heading tracking-[0.08em] sm:tracking-[0.12em] uppercase">
+              Save your slot now.
+            </p>
+          </div>
+          {onGetTickets && (
+            <motion.button
+              whileHover={{ scale: 1.04, boxShadow: '0 0 22px rgba(255,0,140,0.45)' }}
+              whileTap={{ scale: 0.96 }}
+              onClick={onGetTickets}
+              className="mb-8 inline-flex items-center gap-2 px-5 py-2.5 border border-ripple-pink text-ripple-pink font-heading tracking-[0.12em] sm:tracking-[0.16em] rounded-lg hover:bg-ripple-pink hover:text-white transition-colors"
+            >
+              <Ticket size={18} />
+              GET TICKETS
+            </motion.button>
+          )}
           <div className="flex gap-4">
             <motion.a whileHover={{ scale: 1.2, color: '#ff008c' }} href="https://instagram.com/ripple_ucms" target="_blank" rel="noopener noreferrer" className="p-3 glass rounded-full text-white/70">
               <Instagram size={24} />
@@ -983,18 +1020,31 @@ export const Footer = () => {
         </div>
 
         <div>
-          <h4 className="text-xl sm:text-2xl font-heading text-ripple-cyan mb-6">NEWSLETTER</h4>
-          <p className="text-white/50 mb-6">Get the latest updates on events and tickets.</p>
-          <div className="flex flex-col sm:flex-row gap-2">
-            <input 
-              type="email" 
-              placeholder="Your Email" 
-              className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-ripple-pink transition-colors"
+          <h4 className="text-xl sm:text-2xl font-heading text-ripple-cyan mb-6">SEND YOUR QUERIES</h4>
+          <p className="text-white/50 mb-6">Query section will be working soon</p>
+          <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 w-full focus:outline-none focus:border-ripple-pink transition-colors"
             />
-            <button className="bg-ripple-pink px-6 py-2 rounded-lg font-bold hover:bg-ripple-pink/80 transition-colors w-full sm:w-auto">
-              JOIN
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 w-full focus:outline-none focus:border-ripple-pink transition-colors"
+            />
+            <textarea
+              placeholder="Your Query"
+              rows={4}
+              className="bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 w-full focus:outline-none focus:border-ripple-pink transition-colors resize-none"
+            />
+            <button
+              type="submit"
+              className="bg-ripple-pink px-6 py-2.5 rounded-lg font-bold hover:bg-ripple-pink/80 transition-colors w-full sm:w-auto"
+            >
+              SEND
             </button>
-          </div>
+          </form>
         </div>
       </div>
 
@@ -1150,7 +1200,6 @@ export const EventsPage = () => {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {visibleEvents.map((event, eventIndex) => (
           <motion.div
-            layout
             key={event.id}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -1180,14 +1229,16 @@ export const EventsPage = () => {
               </p>
               
               <div className="flex flex-col gap-3">
-                <a
-                  href={event.registerUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 bg-ripple-pink py-3 rounded-xl font-heading text-lg sm:text-xl tracking-[0.1em] sm:tracking-widest hover:bg-ripple-pink/80 transition-all shadow-[0_0_15px_rgba(255,0,140,0.3)] text-center"
-                >
-                  REGISTER
-                </a>
+                {event.registerUrl !== '#' && (
+                  <a
+                    href={event.registerUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 bg-ripple-pink py-3 rounded-xl font-heading text-lg sm:text-xl tracking-[0.1em] sm:tracking-widest hover:bg-ripple-pink/80 transition-all shadow-[0_0_15px_rgba(255,0,140,0.3)] text-center"
+                  >
+                    REGISTER
+                  </a>
+                )}
                 {event.rulesUrl ? (
                   <a
                     href={event.rulesUrl}
