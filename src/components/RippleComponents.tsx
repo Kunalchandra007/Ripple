@@ -17,6 +17,7 @@ export interface Event {
   description: string;
   image: string;
   registerUrl: string;
+  rulesUrl?: string;
   literaryType?: string;
   day: 1 | 2 | 3;
   time: string;
@@ -25,6 +26,7 @@ export interface Event {
 // --- Constants ---
 export const CATEGORIES = [
   'All',
+  'Academic',
   'Art',
   'Dance',
   'Drama',
@@ -46,6 +48,18 @@ const BLANK_POSTER =
   "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 800'><rect width='600' height='800' fill='%230a0a0a'/><rect x='18' y='18' width='564' height='764' fill='none' stroke='%23333333' stroke-width='3'/><text x='300' y='360' fill='%23ffffff' font-family='Arial, sans-serif' font-size='58' font-weight='700' text-anchor='middle'>POSTER</text><text x='300' y='440' fill='%23ffffff' font-family='Arial, sans-serif' font-size='58' font-weight='700' text-anchor='middle'>COMING SOON</text></svg>";
 
 export const EVENTS: Event[] = [
+  // Academic
+  {
+    id: '50',
+    name: 'INIQUITOUS',
+    category: 'Academic',
+    description: '[Academic event]',
+    image: '/events/Academic/Iniquitous.jpg',
+    registerUrl: '#',
+    rulesUrl: '/events/Academic/Inquitous.pdf',
+    day: 1,
+    time: 'TBA'
+  },
   // Art
   {
     id: '1',
@@ -54,6 +68,7 @@ export const EVENTS: Event[] = [
     description: '[Pot painting Competition]',
     image: '/events/Art/Pot o paint.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSe-UkFluzVVC6hMuw7Bj18UhAsVnwhX-9SQ3dcrGJAU7O2Jdw/viewform',
+    rulesUrl: '/events/Art/Pot o paint.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -64,6 +79,7 @@ export const EVENTS: Event[] = [
     description: '[Bottle painting Competition]',
     image: '/events/Art/Rang e bottle.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScrjnojVb9Zq53AFUg58hu4J4g-YVCFZdlV5ElupArP2HRVFg/viewform',
+    rulesUrl: '/events/Art/Rang e bottle.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -74,6 +90,7 @@ export const EVENTS: Event[] = [
     description: '[Tote bag painting Competition]',
     image: '/events/Art/Tote ally creative.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCSwSpFFu_ovyawhfST6vbyjz_dNUNCpE5X-UzNMr-9YrlLw/viewform',
+    rulesUrl: '/events/Art/Totally creative.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -85,6 +102,7 @@ export const EVENTS: Event[] = [
     description: '[Duo dance Competition]',
     image: '/events/Dance/Mudra.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeTMZoPaoCPTDvrVHxCrtUO3AHqM9WKe9GyX58tP4i1HN6Tsg/viewform',
+    rulesUrl: '/events/Dance/Mudra.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -95,6 +113,7 @@ export const EVENTS: Event[] = [
     description: '[Solo dance Competition]',
     image: '/events/Dance/Namhya.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSflBI22yGMT-e70U-CzbRjwzBvoufpGL6ciz0rBKeeAh5dvEA/viewform?usp=header',
+    rulesUrl: '/events/Dance/Namhya.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -103,8 +122,9 @@ export const EVENTS: Event[] = [
     name: 'NRITYANJALI',
     category: 'Dance',
     description: '[Group dance Competition]',
-    image: BLANK_POSTER,
+    image: '/events/Dance/Nrityanjali.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfricskuwFBGG4pTS5wM82YA1c-wSR5PTwyHzEV3lLWPvzUOA/viewform',
+    rulesUrl: '/events/Dance/Nrityanjali.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -113,8 +133,9 @@ export const EVENTS: Event[] = [
     name: 'RETRO REMIX',
     category: 'Dance',
     description: '[Online reel making Competition]',
-    image: BLANK_POSTER,
+    image: '/events/Dance/Retro remix.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfwTaakwVhUISzXz04O2iz5FqHfeP9SZtDDWHm5Pg9cxbTXEA/viewform',
+    rulesUrl: '/events/Dance/Retro remix.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -126,6 +147,7 @@ export const EVENTS: Event[] = [
     description: '[Online script writing Competition]',
     image: '/events/Drama/Dialoguebaazi.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScSQlxxNR5qA2LCDTb8dH0jQlcIcHf7xx-9gdxukm3CNl6CjA/viewform',
+    rulesUrl: '/events/Drama/Dialoguebaazi.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -136,6 +158,7 @@ export const EVENTS: Event[] = [
     description: '[Nukkad natak Competition]',
     image: '/events/Drama/Kashmakash.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeuF8qhT11p0_28X56GXEPQc5fGMWfGMfHUszXALkrrch25tg/viewform',
+    rulesUrl: '/events/Drama/Kashmakash.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -146,6 +169,7 @@ export const EVENTS: Event[] = [
     description: '[Mono/Duet act Competition]',
     image: '/events/Drama/Sarthak.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScCA_jfXgU1DH9IVWM1BVxWwF7fKH-TiRa5g6_ymEAcebyCiw/viewform',
+    rulesUrl: '/events/Drama/Sarthak.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -155,18 +179,9 @@ export const EVENTS: Event[] = [
     name: 'ADIRA',
     category: 'Fashion',
     description: '[The catwalk carnival]',
-    image: BLANK_POSTER,
+    image: '/events/Fashion/Adira.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSe3c46Bj3xWx2YVWjd_VQ_P4b7BxIl6zRu6IR7tQppMFG5irA/viewform',
-    day: 1,
-    time: 'TBA'
-  },
-  {
-    id: '12',
-    name: 'ALANKRIT',
-    category: 'Fashion',
-    description: '[Placeholder details pending]',
-    image: '/events/Fashion/Alankrit.png',
-    registerUrl: '#',
+    rulesUrl: '/events/Fashion/Adira.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -177,6 +192,7 @@ export const EVENTS: Event[] = [
     description: '[Online makeup/portfolio Competition]',
     image: '/events/Fashion/Navras.png',
     registerUrl: '#',
+    rulesUrl: '/events/Fashion/Navras.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -188,6 +204,7 @@ export const EVENTS: Event[] = [
     description: '[On spot filmmaking Competition]',
     image: '/events/Film Making/Manzar.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfyXX64NJvk_a4vLeLcnUaT7Xs0_hu-6fnZ9fF1Mdi6e-El1w/viewform',
+    rulesUrl: '/events/Film Making/Manzar.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -198,6 +215,7 @@ export const EVENTS: Event[] = [
     description: '[Online film submission Competition]',
     image: '/events/Film Making/Nazaara.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScbOdpWR4JyeunBwibsY_JZvb39JbQgLGWd9e5S3seiVzoMlg/viewform',
+    rulesUrl: '/events/Film Making/Nazaara.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -207,8 +225,9 @@ export const EVENTS: Event[] = [
     name: "RIPPLE'S GOT TALENT",
     category: 'Informal',
     description: '[Informal event]',
-    image: BLANK_POSTER,
+    image: "/events/Informal/Ripple's got latent.jpg",
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeBv1xE_bYVO2lBCIXEaXmNuXxcH3zbvWT-bI47FWd2vZD_yA/viewform',
+    rulesUrl: '/events/Informal/Ripple got talent.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -217,8 +236,9 @@ export const EVENTS: Event[] = [
     name: 'THE GREAT GAME OF TREASURE',
     category: 'Informal',
     description: '[Informal event]',
-    image: BLANK_POSTER,
+    image: '/events/Informal/The great game of treasure.jpg',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSc2suOrqcxNh3-MFzn5gy_c06ha-7pLSyArhqwlfLIHNf91sA/viewform',
+    rulesUrl: '/events/Informal/The great game of treasure.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -227,7 +247,7 @@ export const EVENTS: Event[] = [
     name: 'HOGATHON',
     category: 'Informal',
     description: '[Informal event]',
-    image: BLANK_POSTER,
+    image: '/events/Informal/Hogathon.jpg',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfVm9STpx73vYRbn8zaJAyrjzR1fd7enHX1DwcCv7dVhVHXbA/viewform',
     day: 1,
     time: 'TBA'
@@ -237,8 +257,9 @@ export const EVENTS: Event[] = [
     name: "THE TRAITOR'S CHAIR",
     category: 'Informal',
     description: '[Informal event]',
-    image: BLANK_POSTER,
+    image: '/events/Informal/The traitors chair.jpg',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfhhPuIdI49xjef1A3XXXjL1YcidWrSJvgOxpXt6fLZmN7rCw/viewform',
+    rulesUrl: '/events/Informal/The traitors chair.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -247,8 +268,9 @@ export const EVENTS: Event[] = [
     name: 'BEG BORROW STEAL',
     category: 'Informal',
     description: '[Informal event]',
-    image: BLANK_POSTER,
+    image: '/events/Informal/Beg borrow steal.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfcQk8ulNGbxJWSiCOrtnSD8vb_sbB5CQJUXoQpaH8J4Myysw/viewform',
+    rulesUrl: '/events/Informal/Beg borrow steal.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -257,8 +279,9 @@ export const EVENTS: Event[] = [
     name: 'DARE TO DART',
     category: 'Informal',
     description: '[Informal event]',
-    image: BLANK_POSTER,
+    image: '/events/Informal/Dare to dart.jpg',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSceNy41iNuGQwod100imWfbTKRxfOEUlnrgG4spAZh1SI8AqA/viewform',
+    rulesUrl: '/events/Informal/Dare to dart.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -267,8 +290,9 @@ export const EVENTS: Event[] = [
     name: "ELEVATOR'S PITCH",
     category: 'Informal',
     description: '[Informal event]',
-    image: BLANK_POSTER,
+    image: '/events/Informal/Elevators pitch.jpg',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScQX9TI2ei5vJQ71UCKmlN1SH9JxG4ja3Ovi-L_Ur-JHaHJ_Q/viewform',
+    rulesUrl: '/events/Informal/Elevators pitch.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -277,8 +301,9 @@ export const EVENTS: Event[] = [
     name: 'PETALS & SECRETS',
     category: 'Informal',
     description: '[Anonymous rose and anonymous compliments]',
-    image: BLANK_POSTER,
+    image: '/events/Informal/Petals and secrets.jpg',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfdJP7QxJXxKkKNc7x78jvRj_P16kNRJzscBndoXbCbS9pA9g/viewform',
+    rulesUrl: '/events/Informal/Petals and secrets.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -287,8 +312,9 @@ export const EVENTS: Event[] = [
     name: 'BLIND TRUST WALK',
     category: 'Informal',
     description: '[Informal event]',
-    image: BLANK_POSTER,
+    image: '/events/Informal/Blind trustwalk.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSd4R868La4O6nlROqoFmuvIVEswM7xaY0I59cHDrV0p3XBCsQ/viewform',
+    rulesUrl: '/events/Informal/Blind trustwalk.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -297,8 +323,9 @@ export const EVENTS: Event[] = [
     name: 'MEMED',
     category: 'Informal',
     description: '[Informal event]',
-    image: BLANK_POSTER,
+    image: '/events/Informal/Memed.jpg',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfluWKe1g2wg8qpFPY2pAGlJTb6c9Ixymn-yTIp9a8wWrCTuQ/viewform',
+    rulesUrl: '/events/Informal/Memed.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -307,8 +334,9 @@ export const EVENTS: Event[] = [
     name: "TEACHER'S CARNIVAL",
     category: 'Informal',
     description: '[Details pending]',
-    image: BLANK_POSTER,
+    image: '/events/Informal/Teachers carnival.png',
     registerUrl: '#',
+    rulesUrl: '/events/Informal/Teachers carnival.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -317,8 +345,9 @@ export const EVENTS: Event[] = [
     name: 'PROM NIGHT',
     category: 'Informal',
     description: '[Details pending]',
-    image: BLANK_POSTER,
+    image: '/events/Informal/Prom night.jpg',
     registerUrl: '#',
+    rulesUrl: '/events/Informal/Prom night.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -329,8 +358,9 @@ export const EVENTS: Event[] = [
     category: 'Literary',
     literaryType: 'QUIZ',
     description: '[A melas flavoured general quiz]',
-    image: BLANK_POSTER,
+    image: '/events/Literary/Quiz/In the mood for hints.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSc1n5Zx7RWIbtdnaA6GohJvcAChu_8tfMRWSEfyzZScqOUwgg/viewform',
+    rulesUrl: '/events/Literary/Quiz/In the mood for hints.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -340,8 +370,9 @@ export const EVENTS: Event[] = [
     category: 'Literary',
     literaryType: 'QUIZ',
     description: '[A movies quiz]',
-    image: BLANK_POSTER,
+    image: '/events/Literary/Quiz/Absolute cinema quiz.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfiEA2M3qXoqNZf0BdJo3-FZ-n1VoKSK4ZJcFUgCLgB_9pQqQ/viewform',
+    rulesUrl: '/events/Literary/Quiz/Absolute cinema quiz.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -351,8 +382,9 @@ export const EVENTS: Event[] = [
     category: 'Literary',
     literaryType: 'QUIZ',
     description: '[India quiz]',
-    image: BLANK_POSTER,
+    image: '/events/Literary/Quiz/Chai charcha aur chaturai.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeRHQw7i4gI_8E9RQQ5Zr6HHMXfTlCgGtm_4Kq-yn2sJ_fRaw/viewform',
+    rulesUrl: '/events/Literary/Quiz/Chai charcha chaturai.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -362,8 +394,9 @@ export const EVENTS: Event[] = [
     category: 'Literary',
     literaryType: 'QUIZ',
     description: '[A Fandom quiz]',
-    image: BLANK_POSTER,
+    image: '/events/Literary/Quiz/Quizzed in my pants.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfdvQJzZYwQVE3cmdWKL4zUzz82yfI_e1HeVmXPiVCxg3nMAA/viewform',
+    rulesUrl: '/events/Literary/Quiz/Quizzed in my pants.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -373,8 +406,9 @@ export const EVENTS: Event[] = [
     category: 'Literary',
     literaryType: 'SPEAKING',
     description: '[Just a minute]',
-    image: BLANK_POSTER,
+    image: '/events/Literary/Speaking/JAM.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScTtqK-4X_-Ti8rJ1T1tT3qWLawXXelZ0bGTFYJp_1ILeL1aA/viewform',
+    rulesUrl: '/events/Literary/Speaking/Jam.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -384,8 +418,9 @@ export const EVENTS: Event[] = [
     category: 'Literary',
     literaryType: 'SPEAKING',
     description: '[Multi level debate]',
-    image: BLANK_POSTER,
+    image: '/events/Literary/Speaking/Senatus.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeqa-zeM9f5eGdioNdYQolAvIuRgP2XbzKB5s1guv8zA5OMgA/viewform',
+    rulesUrl: '/events/Literary/Speaking/Senatus.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -395,8 +430,9 @@ export const EVENTS: Event[] = [
     category: 'Literary',
     literaryType: 'SPEAKING',
     description: '[Nepal interim governance crisis committee]',
-    image: BLANK_POSTER,
+    image: '/events/Literary/Speaking/Crisis Commitee.jpg',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSe2r2dQku2ea6WCIE3HvY8S6MzwcG0dgSD9UABYqdmHDjFICA/viewform',
+    rulesUrl: '/events/Literary/Speaking/Crisis commiteee.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -406,8 +442,9 @@ export const EVENTS: Event[] = [
     category: 'Literary',
     literaryType: 'WRITING',
     description: '[Online creative writing]',
-    image: BLANK_POSTER,
+    image: '/events/Literary/Writing/Talesmith.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScYsOo4AwZ2zRFrCpOAtXoVVo_6az1EAUmOIuK6DkNDlapmdA/viewform',
+    rulesUrl: '/events/Literary/Writing/Talesmith.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -419,6 +456,7 @@ export const EVENTS: Event[] = [
     description: '[Art events and mental health talks]',
     image: '/events/Mental Health/Mind and maps.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSe65c8xwiR21sNwxziHDJ1h1Qho03yv2qE-XUNGLelWSbyPgQ/viewform',
+    rulesUrl: '/events/Mental Health/Minds and maps.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -430,6 +468,7 @@ export const EVENTS: Event[] = [
     description: '[Battle of bands]',
     image: '/events/Music/Bob.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdrckovuXEM7-IJdP6BxTMjHbbP5vNQNTFWURmMY-8kvUxcGg/viewform',
+    rulesUrl: '/events/Music/Valhallw.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -440,6 +479,7 @@ export const EVENTS: Event[] = [
     description: '[Solo Indian singing Competition]',
     image: '/events/Music/Ekagrata.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdez1vsO9HQGcgLX4bJYy87hzWcgGIZ0AbgiybCMex_LfB4Jg/viewform',
+    rulesUrl: '/events/Music/Ekagrata.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -450,6 +490,7 @@ export const EVENTS: Event[] = [
     description: '[Solo western singing Competition]',
     image: '/events/Music/Lyrica solistica.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeGoD-NOPs2C3N4Ll_Sx3a6xfocseQz_hEukOh3TQrh2GvB3A/viewform',
+    rulesUrl: '/events/Music/Lyrics solistica.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -460,6 +501,7 @@ export const EVENTS: Event[] = [
     description: '[Solo instrumental Competition]',
     image: '/events/Music/Swarnabhuti.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdFC_SQfgN6GybrdBjiBVm6RlUfLEXzD-jnjJUloslqnGja0g/viewform',
+    rulesUrl: '/events/Music/Swarnabhuti.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -502,6 +544,7 @@ export const EVENTS: Event[] = [
     description: '[On spot photography Competition]',
     image: '/events/Photography/Aloka.jpg',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScM9Yrqe4lWBbmW-xV7jSKOYTtItMWZHreuyOZH4rwYzWyF7Q/viewform',
+    rulesUrl: '/events/Photography/Aloka.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -512,6 +555,7 @@ export const EVENTS: Event[] = [
     description: '[Event photography]',
     image: '/events/Photography/Lamha.jpg',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfDS6Q5mvdWe5GzedapUUBaXpdaCqdWMJbEv3rGqPf94xV9Rg/viewform',
+    rulesUrl: '/events/Photography/Lamha.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -522,6 +566,7 @@ export const EVENTS: Event[] = [
     description: '[Online photography Competition]',
     image: '/events/Photography/Pratibimba.jpg',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCGxkXQYuVJZgGf3YD3yjui6g1-PSw-BiFOFiV8kwV30P2RA/viewform',
+    rulesUrl: '/events/Photography/Pratibimba.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -533,6 +578,7 @@ export const EVENTS: Event[] = [
     description: '[Cultural pot painting Competition]',
     image: '/events/Welfare/Rang e kalash.png',
     registerUrl: '#',
+    rulesUrl: '/events/Welfare/Rang e kalaash.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -543,6 +589,7 @@ export const EVENTS: Event[] = [
     description: '[Poster making Competition]',
     image: '/events/Welfare/Societies_ event (RIPPLE_26)_20260221_061129_0000.png',
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeG6_tNyJ_ESTO3ali9880xQwb9HoFORSsAwGPZ4ySU4X3lmw/viewform',
+    rulesUrl: '/events/Welfare/Transcend.pdf',
     day: 1,
     time: 'TBA'
   },
@@ -553,6 +600,7 @@ export const EVENTS: Event[] = [
     description: '[Quiz Competition]',
     image: '/events/Welfare/Udaan.png',
     registerUrl: '#',
+    rulesUrl: '/events/Welfare/Udaan.pdf',
     day: 1,
     time: 'TBA'
   }
@@ -1140,12 +1188,24 @@ export const EventsPage = () => {
                 >
                   REGISTER
                 </a>
-                <button
-                  type="button"
-                  className="w-full py-3 rounded-xl border border-white/20 font-heading text-base sm:text-lg tracking-[0.1em] sm:tracking-widest text-white/90 hover:bg-white/5 transition-colors"
-                >
-                  RULE BOOK
-                </button>
+                {event.rulesUrl ? (
+                  <a
+                    href={event.rulesUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3 rounded-xl border border-white/20 font-heading text-base sm:text-lg tracking-[0.1em] sm:tracking-widest text-white/90 hover:bg-white/5 transition-colors text-center"
+                  >
+                    RULE BOOK
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    disabled
+                    className="w-full py-3 rounded-xl border border-white/20 font-heading text-base sm:text-lg tracking-[0.1em] sm:tracking-widest text-white/40 cursor-not-allowed"
+                  >
+                    RULE BOOK
+                  </button>
+                )}
               </div>
             </div>
           </motion.div>
