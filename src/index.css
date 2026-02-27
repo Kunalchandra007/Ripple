@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&family=Bebas+Neue&family=Poppins:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
+@font-face {
+  font-family: "TC October";
+  src: local("TC October"), local("TCOctober");
+  font-display: swap;
+}
+
 @theme {
   --font-display: "Anton", sans-serif;
   --font-heading: "Bebas Neue", sans-serif;
@@ -50,4 +56,193 @@
 ::-webkit-scrollbar-thumb {
   @apply bg-ripple-pink rounded-full;
   box-shadow: 0 0 10px #ff008c;
+}
+
+.app-content {
+  opacity: 0;
+  transition: opacity 420ms ease;
+}
+
+.app-content--visible {
+  opacity: 1;
+}
+
+.ripple-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, #260014 0%, #11000a 58%, #000 100%);
+  isolation: isolate;
+  transition: opacity 420ms ease;
+}
+
+.ripple-preloader--fade {
+  opacity: 0;
+}
+
+.ripple-preloader__title {
+  position: relative;
+  z-index: 3;
+  margin: 0;
+  color: #ff8dcb;
+  font-family: "Anton", "TC October", "Bebas Neue", sans-serif;
+  font-size: clamp(2.5rem, 10vw, 6rem);
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(255, 0, 140, 0.8), 0 0 32px rgba(255, 0, 140, 0.52);
+  animation: rippleTitlePulse 2.8s ease-out both, rippleTitleGlitch 420ms steps(2, end) 160ms infinite;
+}
+
+.ripple-preloader__title::before,
+.ripple-preloader__title::after {
+  position: absolute;
+  inset: 0;
+  content: attr(data-text);
+  pointer-events: none;
+}
+
+.ripple-preloader__title::before {
+  color: rgba(255, 168, 220, 0.9);
+  text-shadow: -2px 0 rgba(255, 200, 235, 0.85);
+  clip-path: polygon(0 5%, 100% 0, 100% 40%, 0 47%);
+  animation: rippleTitleSliceTop 420ms steps(2, end) infinite;
+}
+
+.ripple-preloader__title::after {
+  color: rgba(255, 0, 140, 0.82);
+  text-shadow: 2px 0 rgba(255, 130, 200, 0.9);
+  clip-path: polygon(0 55%, 100% 48%, 100% 100%, 0 100%);
+  animation: rippleTitleSliceBottom 360ms steps(2, end) infinite;
+}
+
+.ripple-preloader__wave {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(80px, 16vw, 180px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 0, 140, 0.82);
+  box-shadow: 0 0 16px rgba(255, 0, 140, 0.9), inset 0 0 14px rgba(255, 0, 140, 0.28);
+  opacity: 0;
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+.ripple-preloader__wave--1 {
+  animation: rippleWave 1500ms ease-out 200ms forwards;
+}
+
+.ripple-preloader__wave--2 {
+  animation: rippleWave 1500ms ease-out 340ms forwards;
+}
+
+.ripple-preloader__wave--3 {
+  animation: rippleWave 1500ms ease-out 480ms forwards;
+}
+
+.ripple-preloader__fill {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(140px, 22vw, 260px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 0, 140, 0.3) 0%, rgba(255, 0, 140, 0.16) 45%, rgba(14, 0, 8, 0) 72%);
+  box-shadow: 0 0 42px rgba(255, 0, 140, 0.35);
+  z-index: 1;
+  will-change: transform, opacity;
+  animation: screenFill 1500ms cubic-bezier(0.22, 1, 0.36, 1) 620ms forwards;
+}
+
+@keyframes rippleWave {
+  0% {
+    transform: translate(-50%, -50%) scale(0.12);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(12);
+    opacity: 0;
+  }
+}
+
+@keyframes screenFill {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(13);
+    opacity: 1;
+  }
+}
+
+@keyframes rippleTitlePulse {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(8px);
+  }
+  20% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes rippleTitleGlitch {
+  0% {
+    transform: translate(0, 0) skew(0deg);
+    text-shadow: 0 0 12px rgba(255, 0, 140, 0.7), 1px 0 rgba(255, 130, 200, 0.8), -1px 0 rgba(255, 0, 140, 0.55);
+  }
+  33% {
+    transform: translate(-2px, 0) skew(-1.5deg);
+    text-shadow: 0 0 12px rgba(255, 0, 140, 0.7), -2px 0 rgba(255, 160, 220, 0.8), 1px 0 rgba(255, 0, 140, 0.5);
+  }
+  66% {
+    transform: translate(2px, -1px) skew(1.5deg);
+    text-shadow: 0 0 12px rgba(255, 0, 140, 0.7), 2px 0 rgba(255, 160, 220, 0.75), -1px 0 rgba(255, 0, 140, 0.55);
+  }
+  100% {
+    transform: translate(0, 0) skew(0deg);
+    text-shadow: 0 0 12px rgba(255, 0, 140, 0.7), 1px 0 rgba(255, 130, 200, 0.8), -1px 0 rgba(255, 0, 140, 0.55);
+  }
+}
+
+@keyframes rippleTitleSliceTop {
+  0% { transform: translate(0, 0); }
+  30% { transform: translate(-3px, -1px); }
+  60% { transform: translate(2px, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes rippleTitleSliceBottom {
+  0% { transform: translate(0, 0); }
+  35% { transform: translate(3px, 1px); }
+  70% { transform: translate(-2px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ripple-preloader__title,
+  .ripple-preloader__title::before,
+  .ripple-preloader__title::after,
+  .ripple-preloader__wave,
+  .ripple-preloader__fill {
+    animation: none;
+  }
 }

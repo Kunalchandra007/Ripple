@@ -7,127 +7,128 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Navbar, Hero, About, Schedule, Gallery, Footer, EventsPage, SponsorsPage, type Page } from './components/RippleComponents';
 
+const PRELOADER_TOTAL_MS = 2800;
+const CONTENT_REVEAL_MS = 2350;
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
-  const [loading, setLoading] = useState(true);
+  const [showPreloader, setShowPreloader] = useState(true);
+  const [isPreloaderFading, setIsPreloaderFading] = useState(false);
 
   useEffect(() => {
-    // Simulate preloader
-    const timer = setTimeout(() => setLoading(false), 2000);
-    return () => clearTimeout(timer);
+    const revealTimer = setTimeout(() => setIsPreloaderFading(true), CONTENT_REVEAL_MS);
+    const hideTimer = setTimeout(() => setShowPreloader(false), PRELOADER_TOTAL_MS);
+    return () => {
+      clearTimeout(revealTimer);
+      clearTimeout(hideTimer);
+    };
   }, []);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [currentPage]);
 
-  if (loading) {
-    return (
-      <div className="h-screen w-full bg-ripple-black flex items-center justify-center overflow-hidden">
-        <motion.div
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.5, 1, 0.5],
-            filter: ["blur(0px)", "blur(4px)", "blur(0px)"]
-          }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="text-5xl sm:text-7xl font-display text-ripple-pink neon-glow-pink"
-        >
-          RIPPLE
-        </motion.div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-ripple-black selection:bg-ripple-pink selection:text-white">
-      {/* Custom Cursor Glow */}
-      <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden hidden md:block">
-        <CursorGlow />
-      </div>
+    <>
+      {showPreloader && (
+        <div className={`ripple-preloader ${isPreloaderFading ? 'ripple-preloader--fade' : ''}`} role="status" aria-live="polite">
+          <div className="ripple-preloader__wave ripple-preloader__wave--1" />
+          <div className="ripple-preloader__wave ripple-preloader__wave--2" />
+          <div className="ripple-preloader__wave ripple-preloader__wave--3" />
+          <div className="ripple-preloader__fill" />
+          <h1 className="ripple-preloader__title" data-text="RIPPLE">RIPPLE</h1>
+        </div>
+      )}
 
-      <Navbar currentPage={currentPage} setPage={setCurrentPage} />
+      <div className={`min-h-screen bg-ripple-black selection:bg-ripple-pink selection:text-white app-content ${isPreloaderFading ? 'app-content--visible' : ''}`}>
+        {/* Custom Cursor Glow */}
+        <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden hidden md:block">
+          <CursorGlow />
+        </div>
 
-      <main>
-        <AnimatePresence mode="wait">
-          {currentPage === 'home' ? (
-            <motion.div
-              key="home"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Hero onGetTickets={() => setCurrentPage('br')} />
-              
-              {/* Scrolling Background for About and Schedule */}
-              <div className="relative">
-                {/* Parallax Scrolling Background */}
-                <div 
-                  className="absolute inset-0 z-0"
-                  style={{
-                    backgroundImage: 'url(https://res.cloudinary.com/dgmwtonil/image/upload/v1772029041/scrolling_ge2fny.jpg)',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundAttachment: 'scroll',
-                    opacity: 0.3
-                  }}
-                />
-                
-                {/* Content */}
-                <div className="relative z-10">
-                  <About />
-                  <Schedule />
-                </div>
-              </div>
-              
-              <Gallery />
-            </motion.div>
-          ) : currentPage === 'events' ? (
-            <motion.div
-              key="events"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <EventsPage />
-            </motion.div>
-          ) : currentPage === 'sponsors' ? (
-            <motion.div
-              key="sponsors"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <SponsorsPage />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="fallback"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="pt-32 sm:pt-40 pb-24 px-4 text-center"
-            >
-              <h1 className="text-4xl sm:text-6xl font-heading text-ripple-cyan mb-4">COMING SOON</h1>
-              <p className="text-white/50 tracking-widest uppercase">The {currentPage} page is under construction.</p>
-              <button 
-                onClick={() => setCurrentPage('home')}
-                className="mt-8 px-8 py-3 border border-ripple-pink text-ripple-pink font-heading text-xl tracking-widest hover:bg-ripple-pink hover:text-white transition-all"
+        <Navbar currentPage={currentPage} setPage={setCurrentPage} />
+
+        <main>
+          <AnimatePresence mode="wait">
+            {currentPage === 'home' ? (
+              <motion.div
+                key="home"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
               >
-                BACK TO HOME
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </main>
+                <Hero onGetTickets={() => setCurrentPage('br')} />
+                
+                {/* Scrolling Background for About and Schedule */}
+                <div className="relative">
+                  {/* Parallax Scrolling Background */}
+                  <div 
+                    className="absolute inset-0 z-0"
+                    style={{
+                      backgroundImage: 'url(https://res.cloudinary.com/dgmwtonil/image/upload/v1772029041/scrolling_ge2fny.jpg)',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      backgroundAttachment: 'scroll',
+                      opacity: 0.3
+                    }}
+                  />
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <About />
+                    <Schedule />
+                  </div>
+                </div>
+                
+                <Gallery />
+              </motion.div>
+            ) : currentPage === 'events' ? (
+              <motion.div
+                key="events"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                <EventsPage />
+              </motion.div>
+            ) : currentPage === 'sponsors' ? (
+              <motion.div
+                key="sponsors"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                <SponsorsPage />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="fallback"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="pt-32 sm:pt-40 pb-24 px-4 text-center"
+              >
+                <h1 className="text-4xl sm:text-6xl font-heading text-ripple-cyan mb-4">COMING SOON</h1>
+                <p className="text-white/50 tracking-widest uppercase">The {currentPage} page is under construction.</p>
+                <button 
+                  onClick={() => setCurrentPage('home')}
+                  className="mt-8 px-8 py-3 border border-ripple-pink text-ripple-pink font-heading text-xl tracking-widest hover:bg-ripple-pink hover:text-white transition-all"
+                >
+                  BACK TO HOME
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </main>
 
-      <Footer onGetTickets={() => setCurrentPage('br')} />
+        <Footer onGetTickets={() => setCurrentPage('br')} />
 
-      {/* Scroll Progress Bar */}
-      <ScrollProgress />
-    </div>
+        {/* Scroll Progress Bar */}
+        <ScrollProgress />
+      </div>
+    </>
   );
 }
 

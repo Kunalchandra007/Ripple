@@ -334,7 +334,7 @@ export const EVENTS: Event[] = [
     id: '26',
     name: "TEACHER'S CARNIVAL",
     category: 'Informal',
-    description: '[Details pending]',
+    description: '',
     image: '/events/Informal/Teachers carnival.png',
     registerUrl: '#',
     rulesUrl: '/events/Informal/Teachers carnival.pdf',
