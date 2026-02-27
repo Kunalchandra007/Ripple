@@ -76,6 +76,8 @@
   overflow: hidden;
   background: radial-gradient(circle at 50% 45%, #260014 0%, #11000a 58%, #000 100%);
   isolation: isolate;
+  contain: strict;
+  will-change: opacity;
   transition: opacity 420ms ease;
 }
 
@@ -93,30 +95,9 @@
   font-weight: 900;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  text-shadow: 0 0 12px rgba(255, 0, 140, 0.8), 0 0 32px rgba(255, 0, 140, 0.52);
-  animation: rippleTitlePulse 2.8s ease-out both, rippleTitleGlitch 420ms steps(2, end) 160ms infinite;
-}
-
-.ripple-preloader__title::before,
-.ripple-preloader__title::after {
-  position: absolute;
-  inset: 0;
-  content: attr(data-text);
-  pointer-events: none;
-}
-
-.ripple-preloader__title::before {
-  color: rgba(255, 168, 220, 0.9);
-  text-shadow: -2px 0 rgba(255, 200, 235, 0.85);
-  clip-path: polygon(0 5%, 100% 0, 100% 40%, 0 47%);
-  animation: rippleTitleSliceTop 420ms steps(2, end) infinite;
-}
-
-.ripple-preloader__title::after {
-  color: rgba(255, 0, 140, 0.82);
-  text-shadow: 2px 0 rgba(255, 130, 200, 0.9);
-  clip-path: polygon(0 55%, 100% 48%, 100% 100%, 0 100%);
-  animation: rippleTitleSliceBottom 360ms steps(2, end) infinite;
+  text-shadow: 0 0 10px rgba(255, 0, 140, 0.75), 0 0 22px rgba(255, 0, 140, 0.45);
+  will-change: transform;
+  animation: rippleTitlePulse 2.8s ease-out both, rippleTitleGlitch 680ms steps(2, end) 700ms infinite;
 }
 
 .ripple-preloader__wave {
@@ -128,22 +109,22 @@
   transform: translate(-50%, -50%) scale(0);
   border-radius: 50%;
   border: 2px solid rgba(255, 0, 140, 0.82);
-  box-shadow: 0 0 16px rgba(255, 0, 140, 0.9), inset 0 0 14px rgba(255, 0, 140, 0.28);
+  box-shadow: 0 0 12px rgba(255, 0, 140, 0.78);
   opacity: 0;
   z-index: 2;
   will-change: transform, opacity;
 }
 
 .ripple-preloader__wave--1 {
-  animation: rippleWave 1500ms ease-out 200ms forwards;
+  animation: rippleWave 1300ms ease-out 220ms forwards;
 }
 
 .ripple-preloader__wave--2 {
-  animation: rippleWave 1500ms ease-out 340ms forwards;
+  animation: rippleWave 1300ms ease-out 340ms forwards;
 }
 
 .ripple-preloader__wave--3 {
-  animation: rippleWave 1500ms ease-out 480ms forwards;
+  animation: rippleWave 1300ms ease-out 460ms forwards;
 }
 
 .ripple-preloader__fill {
@@ -155,10 +136,10 @@
   transform: translate(-50%, -50%) scale(0);
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 0, 140, 0.3) 0%, rgba(255, 0, 140, 0.16) 45%, rgba(14, 0, 8, 0) 72%);
-  box-shadow: 0 0 42px rgba(255, 0, 140, 0.35);
+  box-shadow: 0 0 28px rgba(255, 0, 140, 0.3);
   z-index: 1;
   will-change: transform, opacity;
-  animation: screenFill 1500ms cubic-bezier(0.22, 1, 0.36, 1) 620ms forwards;
+  animation: screenFill 1300ms cubic-bezier(0.22, 1, 0.36, 1) 620ms forwards;
 }
 
 @keyframes rippleWave {
@@ -167,7 +148,7 @@
     opacity: 0.95;
   }
   100% {
-    transform: translate(-50%, -50%) scale(12);
+    transform: translate(-50%, -50%) scale(10);
     opacity: 0;
   }
 }
@@ -181,7 +162,7 @@
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, -50%) scale(13);
+    transform: translate(-50%, -50%) scale(11);
     opacity: 1;
   }
 }
@@ -189,58 +170,39 @@
 @keyframes rippleTitlePulse {
   0% {
     opacity: 0;
-    filter: blur(8px);
-    transform: translateY(8px);
+    transform: translateY(6px);
   }
   20% {
     opacity: 1;
-    filter: blur(0);
     transform: translateY(0);
   }
   100% {
     opacity: 1;
-    filter: blur(0);
     transform: translateY(0);
   }
 }
 
 @keyframes rippleTitleGlitch {
   0% {
-    transform: translate(0, 0) skew(0deg);
-    text-shadow: 0 0 12px rgba(255, 0, 140, 0.7), 1px 0 rgba(255, 130, 200, 0.8), -1px 0 rgba(255, 0, 140, 0.55);
+    transform: translate(0, 0);
+    text-shadow: 0 0 10px rgba(255, 0, 140, 0.75), 1px 0 rgba(255, 130, 200, 0.72), -1px 0 rgba(255, 0, 140, 0.5);
   }
   33% {
-    transform: translate(-2px, 0) skew(-1.5deg);
-    text-shadow: 0 0 12px rgba(255, 0, 140, 0.7), -2px 0 rgba(255, 160, 220, 0.8), 1px 0 rgba(255, 0, 140, 0.5);
+    transform: translate(-1px, 0);
+    text-shadow: 0 0 10px rgba(255, 0, 140, 0.75), -1px 0 rgba(255, 160, 220, 0.68), 1px 0 rgba(255, 0, 140, 0.48);
   }
   66% {
-    transform: translate(2px, -1px) skew(1.5deg);
-    text-shadow: 0 0 12px rgba(255, 0, 140, 0.7), 2px 0 rgba(255, 160, 220, 0.75), -1px 0 rgba(255, 0, 140, 0.55);
+    transform: translate(1px, -1px);
+    text-shadow: 0 0 10px rgba(255, 0, 140, 0.75), 1px 0 rgba(255, 160, 220, 0.68), -1px 0 rgba(255, 0, 140, 0.5);
   }
   100% {
-    transform: translate(0, 0) skew(0deg);
-    text-shadow: 0 0 12px rgba(255, 0, 140, 0.7), 1px 0 rgba(255, 130, 200, 0.8), -1px 0 rgba(255, 0, 140, 0.55);
+    transform: translate(0, 0);
+    text-shadow: 0 0 10px rgba(255, 0, 140, 0.75), 1px 0 rgba(255, 130, 200, 0.72), -1px 0 rgba(255, 0, 140, 0.5);
   }
-}
-
-@keyframes rippleTitleSliceTop {
-  0% { transform: translate(0, 0); }
-  30% { transform: translate(-3px, -1px); }
-  60% { transform: translate(2px, 1px); }
-  100% { transform: translate(0, 0); }
-}
-
-@keyframes rippleTitleSliceBottom {
-  0% { transform: translate(0, 0); }
-  35% { transform: translate(3px, 1px); }
-  70% { transform: translate(-2px, -1px); }
-  100% { transform: translate(0, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .ripple-preloader__title,
-  .ripple-preloader__title::before,
-  .ripple-preloader__title::after,
   .ripple-preloader__wave,
   .ripple-preloader__fill {
     animation: none;

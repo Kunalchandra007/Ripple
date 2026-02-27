@@ -14,6 +14,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [showPreloader, setShowPreloader] = useState(true);
   const [isPreloaderFading, setIsPreloaderFading] = useState(false);
+  const shouldRenderApp = isPreloaderFading || !showPreloader;
 
   useEffect(() => {
     const revealTimer = setTimeout(() => setIsPreloaderFading(true), CONTENT_REVEAL_MS);
@@ -36,10 +37,11 @@ export default function App() {
           <div className="ripple-preloader__wave ripple-preloader__wave--2" />
           <div className="ripple-preloader__wave ripple-preloader__wave--3" />
           <div className="ripple-preloader__fill" />
-          <h1 className="ripple-preloader__title" data-text="RIPPLE">RIPPLE</h1>
+          <h1 className="ripple-preloader__title">RIPPLE</h1>
         </div>
       )}
 
+      {shouldRenderApp && (
       <div className={`min-h-screen bg-ripple-black selection:bg-ripple-pink selection:text-white app-content ${isPreloaderFading ? 'app-content--visible' : ''}`}>
         {/* Custom Cursor Glow */}
         <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden hidden md:block">
@@ -128,6 +130,7 @@ export default function App() {
         {/* Scroll Progress Bar */}
         <ScrollProgress />
       </div>
+      )}
     </>
   );
 }
