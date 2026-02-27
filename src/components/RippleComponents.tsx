@@ -801,47 +801,50 @@ export const Schedule = () => {
     1: [
       { time: '9 am onwards', event: 'Kashmakash' },
       { time: '9 am onwards', event: 'Swarnabhuti' },
-      { time: '10 am onwards', event: 'Mind & Maps' },
-      { time: '10 am onwards', event: 'Rang-e-kalash' },
-      { time: '1 pm onwards', event: 'Valhalla' },
-      { time: '1 pm onwards', event: 'Shadpwed Script' },
-      { time: '1 pm onwards', event: 'JAM' },
-      { time: '1 pm onwards', event: "The traitor's chair" },
-      { time: '2 pm onwards', event: 'In the mood for hints' },
-      { time: '2 pm onwards', event: 'Tote-ally Creative' },
-      { time: '3 pm onwards', event: "Elevator's Pitch" },
-      { time: '4 pm onwards', event: 'Prom Night' },
-      { time: 'NIGHT onwards', event: 'BAND NIGHT' }
+      { time: '10 am onwards', event: 'Mind & Maps.' },
+      { time: '10 am onwards', event: 'Rang-e-kalash.' },
+      { time: '1 pm onwards', event: 'Valhalla.' },
+      { time: '1 pm onwards', event: 'Shadpwed Script.' },
+      { time: '1 pm onwards', event: 'JAM.' },
+      { time: '1 pm onwards', event: "The traitor's chair." },
+      { time: '2 pm onwards', event: 'In the mood for hints.' },
+      { time: '2 pm onwards', event: 'Tote-ally Creative.' },
+      { time: '3 pm onwards', event: "Elevator's Pitch." },
+      { time: '4 pm onwards', event: 'Prom Night.' },
+      { time: 'NIGHT', event: 'BAND NIGHT.' }
     ],
     2: [
-      { time: '9-1 onwards', event: 'Crisis Committee' },
-      { time: '9-4 onwards', event: 'Filler Quiz' },
-      { time: '10-1 onwards', event: 'Udaan' },
-      { time: '10-5 onwards', event: 'Aloka' },
-      { time: '10-1 onwards', event: 'Botella' },
-      { time: '10-5 onwards', event: 'Sarthak' },
-      { time: '1-5 onwards', event: 'India Quiz' },
-      { time: '2-5 onwards', event: 'Husn-e-Nayan' },
-      { time: '10-2 onwards', event: 'Nrityanjali' },
-      { time: 'NIGHT onwards', event: 'Fashion Night' }
+      { time: '9 am onwards', event: 'Nepal interim governance crisis committee' },
+      { time: '9 am onwards', event: 'Sarthak' },
+      { time: '10 am onwards', event: 'Nrityanjali' },
+      { time: '10 am onwards', event: 'Aloka.' },
+      { time: '11 am onwards', event: "Teacher's Carnival." },
+      { time: '12 pm onwards', event: 'Beg borrow and steal.' },
+      { time: '1 pm onwards', event: 'Dare to Dart' },
+      { time: '2 pm onwards', event: 'Chai Charcha Chaturai.' },
+      { time: '2 pm onwards', event: 'Blind trustwalk.' },
+      { time: '3 pm onwards', event: 'Rang-e-bottle.' },
+      { time: '3 pm onwards', event: "Ripple's got latent." },
+      { time: '3 pm onwards', event: 'Adira.' },
+      { time: 'NIGHT', event: 'DJ NIGHT.' }
     ],
     3: [
-      { time: '9 am onwards', event: 'Senatus' },
-      { time: '9 am onwards', event: 'Inquitous' },
-      { time: '9 am onwards', event: 'Quizzed in my pants' },
-      { time: '9 am onwards', event: 'Namhya' },
-      { time: '9 am onwards', event: 'Manzar' },
-      { time: '10 am onwards', event: 'Transcend' },
-      { time: '11 am onwards', event: 'Lyrica solistica' },
-      { time: '11 am onwards', event: 'Mudra' },
-      { time: '11 am onwards', event: 'Udaan' },
+      { time: '9 am onwards', event: 'Senatus.' },
+      { time: '9 am onwards', event: 'Inquitous.' },
+      { time: '9 am onwards', event: 'Quizzed in my pants.' },
+      { time: '9 am onwards', event: 'Namhya.' },
+      { time: '9 am onwards', event: 'Manzar.' },
+      { time: '10 am onwards', event: 'Transcend.' },
+      { time: '11 am onwards', event: 'Lyrica solistica.' },
+      { time: '11 am onwards', event: 'Mudra.' },
+      { time: '11 am onwards', event: 'Udaan.' },
       { time: '11 am onwards', event: 'The Great Game of Treasure' },
-      { time: '12 pm onwards', event: 'Hogathon' },
-      { time: '1 pm onwards', event: 'Iqraar-e-Alfaaz' },
-      { time: '1 pm onwards', event: 'Ekagrata' },
-      { time: '2 pm onwards', event: 'Pot-o-Paint' },
-      { time: '2 pm onwards', event: 'Absolute cinema quiz' },
-      { time: 'NIGHT onwards', event: 'STAR NIGHT' }
+      { time: '12 pm onwards', event: 'Hogathon.' },
+      { time: '1 pm onwards', event: 'Iqraar-e-Alfaaz.' },
+      { time: '1 pm onwards', event: 'Ekagrata.' },
+      { time: '2 pm onwards', event: 'Pot-o-Paint.' },
+      { time: '2 pm onwards', event: 'Absolute cinema quiz.' },
+      { time: 'NIGHT', event: 'STAR NIGHT.' }
     ]
   };
 
@@ -1317,3 +1320,4 @@ export const SponsorsPage = () => {
     </div>
   );
 };
+
