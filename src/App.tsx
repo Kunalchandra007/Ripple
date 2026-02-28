@@ -7,22 +7,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Navbar, Hero, About, Schedule, Gallery, Footer, EventsPage, SponsorsPage, type Page } from './components/RippleComponents';
 
-const PRELOADER_TOTAL_MS = 2800;
-const CONTENT_REVEAL_MS = 2350;
-
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
-  const [showPreloader, setShowPreloader] = useState(true);
-  const [isPreloaderFading, setIsPreloaderFading] = useState(false);
-  const shouldRenderApp = isPreloaderFading || !showPreloader;
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const revealTimer = setTimeout(() => setIsPreloaderFading(true), CONTENT_REVEAL_MS);
-    const hideTimer = setTimeout(() => setShowPreloader(false), PRELOADER_TOTAL_MS);
-    return () => {
-      clearTimeout(revealTimer);
-      clearTimeout(hideTimer);
-    };
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -31,18 +22,22 @@ export default function App() {
 
   return (
     <>
-      {showPreloader && (
-        <div className={`ripple-preloader ${isPreloaderFading ? 'ripple-preloader--fade' : ''}`} role="status" aria-live="polite">
-          <div className="ripple-preloader__wave ripple-preloader__wave--1" />
-          <div className="ripple-preloader__wave ripple-preloader__wave--2" />
-          <div className="ripple-preloader__wave ripple-preloader__wave--3" />
-          <div className="ripple-preloader__fill" />
-          <h1 className="ripple-preloader__title">RIPPLE</h1>
+      {loading ? (
+        <div className="h-screen w-full bg-ripple-black flex items-center justify-center overflow-hidden">
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.5, 1, 0.5],
+              filter: ["blur(0px)", "blur(4px)", "blur(0px)"]
+            }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="text-5xl sm:text-7xl preloader-font text-ripple-pink neon-glow-pink"
+          >
+            RIPPLE
+          </motion.div>
         </div>
-      )}
-
-      {shouldRenderApp && (
-      <div className={`min-h-screen bg-ripple-black selection:bg-ripple-pink selection:text-white app-content ${isPreloaderFading ? 'app-content--visible' : ''}`}>
+      ) : (
+      <div className="min-h-screen bg-ripple-black selection:bg-ripple-pink selection:text-white">
         {/* Custom Cursor Glow */}
         <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden hidden md:block">
           <CursorGlow />

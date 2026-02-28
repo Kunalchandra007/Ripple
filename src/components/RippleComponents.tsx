@@ -109,7 +109,7 @@ export const EVENTS: Event[] = [
   },
   {
     id: '5',
-    name: 'NAMHYA',
+    name: 'NAMYA',
     category: 'Dance',
     description: '[Solo dance Competition]',
     image: '/events/Dance/Namhya.png',
@@ -832,7 +832,7 @@ export const Schedule = () => {
       { time: '9 am onwards', event: 'Senatus' },
       { time: '9 am onwards', event: 'Inquitous' },
       { time: '9 am onwards', event: 'Quizzed in my pants' },
-      { time: '9 am onwards', event: 'Namhya' },
+      { time: '9 am onwards', event: 'Namya' },
       { time: '9 am onwards', event: 'Manzar' },
       { time: '10 am onwards', event: 'Transcend' },
       { time: '11 am onwards', event: 'Lyrica solistica' },
@@ -996,7 +996,7 @@ export const Footer = ({ onGetTickets }: { onGetTickets?: () => void }) => {
             <motion.a whileHover={{ scale: 1.2, color: '#00f5ff' }} href="mailto:ripple2026.ucms@gmail.com" className="p-3 glass rounded-full text-white/70">
               <Mail size={24} />
             </motion.a>
-            <motion.a whileHover={{ scale: 1.2, color: '#7b2ff7' }} href="tel:7835810675" className="p-3 glass rounded-full text-white/70">
+            <motion.a whileHover={{ scale: 1.2, color: '#7b2ff7' }} href="tel:9870163059" className="p-3 glass rounded-full text-white/70">
               <Phone size={24} />
             </motion.a>
           </div>
@@ -1015,6 +1015,10 @@ export const Footer = ({ onGetTickets }: { onGetTickets?: () => void }) => {
           <div className="flex items-center gap-4 text-white/60">
             <Mail className="text-ripple-pink shrink-0" />
             <a href="mailto:ripple2026.ucms@gmail.com" className="hover:text-ripple-cyan transition-colors">ripple2026.ucms@gmail.com</a>
+          </div>
+          <div className="flex items-center gap-4 text-white/60">
+            <Phone className="text-ripple-pink shrink-0" />
+            <a href="tel:9870163059" className="hover:text-ripple-cyan transition-colors">9870163059</a>
           </div>
           <div className="flex items-center gap-4 text-white/60">
             <Phone className="text-ripple-pink shrink-0" />
