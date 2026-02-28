@@ -1072,7 +1072,6 @@ export const Footer = ({ onGetTickets }: { onGetTickets?: () => void }) => {
       </div>
 
       <div className="max-w-7xl mx-auto mt-14 sm:mt-24 pt-8 border-t border-white/5 text-white/30 text-xs sm:text-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-        <p className="text-center sm:text-left">&copy; 2026 RIPPLE FEST. ALL RIGHTS RESERVED. DESIGNED WITH NEON & SOUL.</p>
         <p className="text-center sm:text-right sm:ml-auto px-2 py-1 font-heading tracking-[0.12em] text-ripple-pink font-bold drop-shadow-[0_0_10px_rgba(255,0,140,0.65)]">
           Made and managed by{' '}
           <a
