@@ -1071,14 +1071,14 @@ export const Footer = ({ onGetTickets }: { onGetTickets?: () => void }) => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto mt-14 sm:mt-24 pt-8 border-t border-white/5 text-white/30 text-xs sm:text-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-        <p className="text-center sm:text-right sm:ml-auto px-2 py-1 font-heading tracking-[0.12em] text-ripple-pink font-bold drop-shadow-[0_0_10px_rgba(255,0,140,0.65)]">
+      <div className="max-w-7xl mx-auto mt-14 sm:mt-24 pt-8 border-t border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <p className="text-center sm:text-right sm:ml-auto px-2 py-1 font-heading text-sm sm:text-base leading-relaxed tracking-[0.04em] sm:tracking-[0.12em] text-ripple-pink font-bold drop-shadow-[0_0_10px_rgba(255,0,140,0.65)]">
           Made and managed by{' '}
           <a
             href="https://my-portfolio-zeta-ruby-26.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-extrabold text-ripple-cyan underline underline-offset-4 decoration-ripple-pink hover:text-white transition-colors"
+            className="inline-block mt-1 sm:mt-0 font-extrabold text-ripple-cyan underline underline-offset-4 decoration-ripple-pink hover:text-white transition-colors"
           >
             Kunal
           </a>
