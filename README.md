@@ -1,20 +1,13 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# RIPPLE Fest
 
-# Run and deploy your AI Studio app
+RIPPLE Fest is a celebration of music, art, culture, and youth energy.
 
-This contains everything you need to run your app locally.
+From live performances and creative showcases to community moments and late-night vibes, RIPPLE brings people together to experience bold ideas and unforgettable memories.
 
-View your app in AI Studio: https://ai.studio/apps/00756d1e-882e-4047-80f8-e1ce89d1e63a
+## What to Expect
+- Live stage performances
+- Creative and cultural showcases
+- Interactive experiences
+- A vibrant festival atmosphere
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+RIPPLE is where stories, sound, and spirit meet.
