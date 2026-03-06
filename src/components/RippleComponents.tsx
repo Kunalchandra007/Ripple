@@ -1312,6 +1312,34 @@ export const EventsPage = () => {
 };
 
 export const SponsorsPage = () => {
+  const sponsors = [
+    {
+      name: 'Krishiv Connect',
+      role: 'Food Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772784532/krishiv_xcybq6.jpg'
+    },
+    {
+      name: 'DU India',
+      role: 'Social Media Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772784512/DU_jlfvsq.webp'
+    },
+    {
+      name: 'DU Today',
+      role: 'Social Media Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772784492/duu_jzem0x.jpg'
+    },
+    {
+      name: '3M Littmann',
+      role: 'Stethoscopes Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772784392/3m_z3hguq.jpg'
+    },
+    {
+      name: 'India Times',
+      role: 'Digital Media Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772784463/indiatimes_jl20fi.jpg'
+    }
+  ];
+
   return (
     <div className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -1339,10 +1367,19 @@ export const SponsorsPage = () => {
         <p className="text-ripple-cyan font-heading text-lg sm:text-2xl tracking-[0.15em] sm:tracking-widest mb-12">PARTNERS WHO MAKE RIPPLE POSSIBLE</p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {['Title Sponsor', 'Powered By', 'Associate Partner', 'Media Partner', 'Community Partner', 'Hospitality Partner'].map((slot) => (
-            <div key={slot} className="glass rounded-3xl p-6 sm:p-8 border border-white/10 min-h-40 flex flex-col justify-between">
-              <span className="text-xs text-white/60 tracking-[0.2em] uppercase">{slot}</span>
-              <h3 className="text-xl sm:text-2xl font-heading tracking-widest text-white/90">Coming Soon</h3>
+          {sponsors.map((sponsor, index) => (
+            <div key={sponsor.name} className="glass rounded-3xl p-6 sm:p-8 border border-white/10 min-h-40 flex flex-col gap-5">
+              <span className="text-xs text-white/60 tracking-[0.2em] uppercase">{sponsor.role}</span>
+              <div className="h-28 sm:h-32 w-full rounded-2xl bg-black/35 border border-white/10 flex items-center justify-center p-4">
+                <img
+                  src={sponsor.image}
+                  alt={sponsor.name}
+                  loading={index < 3 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+              <h3 className="text-xl sm:text-2xl font-heading tracking-widest text-white/90">{sponsor.name}</h3>
             </div>
           ))}
         </div>
