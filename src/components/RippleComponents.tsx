@@ -1337,6 +1337,11 @@ export const SponsorsPage = () => {
       name: 'India Times',
       role: 'Digital Media Partner',
       image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772784463/indiatimes_jl20fi.jpg'
+    },
+    {
+      name: 'Marrow',
+      role: 'Education Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772898315/Marrow_Logo_Blue_udz3jc.png'
     }
   ];
 
