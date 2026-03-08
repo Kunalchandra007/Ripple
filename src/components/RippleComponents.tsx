@@ -319,7 +319,7 @@ export const EVENTS: Event[] = [
     category: 'Informal',
     description: '[Anonymous rose and anonymous compliments]',
     image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772289255/Petals_and_secrets_bf4uyt.jpg',
-    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfdJP7QxJXxKkKNc7x78jvRj_P16kNRJzscBndoXbCbS9pA9g/viewform',
+    registerUrl: 'https://forms.gle/cxp67qPq5sxEPcUj8',
     rulesUrl: '/events/Informal/Petals and secrets.pdf',
     day: 1,
     time: 'TBA'
@@ -1342,6 +1342,11 @@ export const SponsorsPage = () => {
       name: 'Marrow',
       role: 'Education Partner',
       image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772898315/Marrow_Logo_Blue_udz3jc.png'
+    },
+    {
+      name: 'Sopera',
+      role: 'Bathing Essentials Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772949502/sophera_rrgcla.jpg'
     }
   ];
 
