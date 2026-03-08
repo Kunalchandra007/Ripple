@@ -9,7 +9,7 @@ import Balatro from './Balatro';
 import SpotlightCard from './SpotlightCard';
 
 // --- Types ---
-export type Page = 'home' | 'events' | 'sponsors' | 'br';
+export type Page = 'home' | 'events' | 'sponsors' | 'lineup' | 'br';
 
 export interface Event {
   id: string;
@@ -650,6 +650,12 @@ export const Navbar = ({ currentPage, setPage }: { currentPage: Page, setPage: (
     },
     {
       icon: <Award size={24} className="text-ripple-cyan" />,
+      label: 'Ripple Lineup',
+      onClick: () => setPage('lineup'),
+      className: currentPage === 'lineup' ? 'active' : ''
+    },
+    {
+      icon: <Ticket size={24} className="text-ripple-pink" />,
       label: 'BR',
       onClick: () => setPage('br'),
       className: currentPage === 'br' ? 'active' : ''
@@ -1347,6 +1353,41 @@ export const SponsorsPage = () => {
       name: 'Sopera',
       role: 'Bathing Essentials Partner',
       image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772949502/sophera_rrgcla.jpg'
+    },
+    {
+      name: 'Plum',
+      role: 'Skincare Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772956638/PLUM_LOGO_PURPLE_1_mjrl69.png'
+    },
+    {
+      name: 'Event Canvas',
+      role: 'Branding Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772957124/event_canvas_yezvmi.jpg'
+    },
+    {
+      name: 'Denver',
+      role: 'Fragnance Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772967694/denver_qo1pea.jpg'
+    },
+    {
+      name: 'Canara Bank',
+      role: 'Banking Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772967728/canara_ewwmor.jpg'
+    },
+    {
+      name: 'RG Hospital',
+      role: 'Hospital Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772967767/RG_bab96g.jpg'
+    },
+    {
+      name: 'Portonics',
+      role: 'Electronics Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772967799/portonics_ekixdc.jpg'
+    },
+    {
+      name: 'Jio Saavn',
+      role: 'Music Partner',
+      image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1772967942/jio_savan_wtarpp.jpg'
     }
   ];
 
@@ -1397,4 +1438,3 @@ export const SponsorsPage = () => {
     </div>
   );
 };
-

@@ -32,3 +32,10 @@ Thumbs.db
 
 # Misc
 *.tsbuildinfo
+
+# Large local media (keep code pushable)
+Sponsers/
+stars shows/
+public/stars shows/
+public/ripplevdo.mp4
+*.mov
