@@ -17,8 +17,6 @@ type Wave = {
   heroVideo: string;
 };
 
-const assetPath = (path: string) => encodeURI(path);
-
 const WAVES: Wave[] = [
   {
     id: 'wave-1',
@@ -26,13 +24,13 @@ const WAVES: Wave[] = [
     subtitle: 'The Opening Wave',
     artist: 'BYOB',
     slot: 'Friday • Main Stage',
-    image: assetPath('/stars shows/Day1/DSC01410.JPG'),
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253425/DSC01410_tbeemg.jpg',
     photos: [
-      assetPath('/stars shows/Day1/DSC01410.JPG'),
-      assetPath('/stars shows/Day1/Black BG logo.jpg')
+      'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253425/DSC01410_tbeemg.jpg',
+      'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253412/Black_BG_logo_afvpre.jpg'
     ],
-    videos: [assetPath('/stars shows/Day1/1. Experience BYOB Live.mov')],
-    heroVideo: '/ripplevdo.mp4',
+    videos: [],
+    heroVideo: 'https://res.cloudinary.com/dgmwtonil/video/upload/v1773253570/ripplevdo_ajzdxu.mp4',
   },
   {
     id: 'wave-2',
@@ -40,14 +38,14 @@ const WAVES: Wave[] = [
     subtitle: 'The Midwave Pulse',
     artist: 'DJ Muneca',
     slot: 'Saturday • Main Stage',
-    image: assetPath('/stars shows/Day2/IMG_6125.JPG.jpeg'),
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253458/IMG_6125.JPG_jypoab.jpg',
     photos: [
-      assetPath('/stars shows/Day2/IMG_6125.JPG.jpeg'),
-      assetPath('/stars shows/Day2/IMG_6203.JPG.jpeg'),
-      assetPath('/stars shows/Day2/IMG_7551.JPG.jpeg')
+      'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253458/IMG_6125.JPG_jypoab.jpg',
+      'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253466/IMG_6203.JPG_z78yo7.jpg',
+      'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253467/IMG_7551.JPG_gtqoxx.jpg'
     ],
     videos: [],
-    heroVideo: '/ripplevdo.mp4',
+    heroVideo: 'https://res.cloudinary.com/dgmwtonil/video/upload/v1773253570/ripplevdo_ajzdxu.mp4',
   },
   {
     id: 'wave-3',
@@ -55,16 +53,16 @@ const WAVES: Wave[] = [
     subtitle: 'The Final Break',
     artist: 'VILEN',
     slot: 'Sunday • Main Stage',
-    image: assetPath('/stars shows/Day3/Screenshot 2026-03-08 134901.jpg'),
+    image: 'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253502/Screenshot_2026-03-08_134901_sqp955.jpg',
     photos: [
-      assetPath('/stars shows/Day3/Screenshot 2026-03-08 134901.jpg'),
-      assetPath('/stars shows/Day3/Screenshot 2026-03-08 134741.jpg'),
-      assetPath('/stars shows/Day3/Screenshot 2026-03-08 134823.jpg'),
-      assetPath('/stars shows/Day3/Screenshot 2026-03-08 134847.jpg'),
-      assetPath('/stars shows/Day3/Screenshot 2026-03-08 134948.jpg')
+      'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253502/Screenshot_2026-03-08_134901_sqp955.jpg',
+      'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253501/Screenshot_2026-03-08_134741_jri2xb.jpg',
+      'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253501/Screenshot_2026-03-08_134823_kqir7k.jpg',
+      'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253501/Screenshot_2026-03-08_134847_nwdyhi.jpg',
+      'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253503/Screenshot_2026-03-08_134948_hdrxip.jpg'
     ],
     videos: [],
-    heroVideo: '/ripplevdo.mp4',
+    heroVideo: 'https://res.cloudinary.com/dgmwtonil/video/upload/v1773253570/ripplevdo_ajzdxu.mp4',
   }
 ];
 
