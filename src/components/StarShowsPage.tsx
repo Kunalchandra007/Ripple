@@ -17,6 +17,8 @@ type Wave = {
   heroVideo: string;
 };
 
+const LINEUP_VIDEO_URL = 'https://res.cloudinary.com/dgmwtonil/video/upload/v1773253570/ripplevdo_ajzdxu.mp4';
+
 const WAVES: Wave[] = [
   {
     id: 'wave-1',
@@ -30,7 +32,7 @@ const WAVES: Wave[] = [
       'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253412/Black_BG_logo_afvpre.jpg'
     ],
     videos: [],
-    heroVideo: 'https://res.cloudinary.com/dgmwtonil/video/upload/v1773253570/ripplevdo_ajzdxu.mp4',
+    heroVideo: LINEUP_VIDEO_URL,
   },
   {
     id: 'wave-2',
@@ -45,7 +47,7 @@ const WAVES: Wave[] = [
       'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253467/IMG_7551.JPG_gtqoxx.jpg'
     ],
     videos: [],
-    heroVideo: 'https://res.cloudinary.com/dgmwtonil/video/upload/v1773253570/ripplevdo_ajzdxu.mp4',
+    heroVideo: LINEUP_VIDEO_URL,
   },
   {
     id: 'wave-3',
@@ -62,7 +64,7 @@ const WAVES: Wave[] = [
       'https://res.cloudinary.com/dgmwtonil/image/upload/v1773253503/Screenshot_2026-03-08_134948_hdrxip.jpg'
     ],
     videos: [],
-    heroVideo: 'https://res.cloudinary.com/dgmwtonil/video/upload/v1773253570/ripplevdo_ajzdxu.mp4',
+    heroVideo: LINEUP_VIDEO_URL,
   }
 ];
 
@@ -118,7 +120,7 @@ export default function StarShowsPage({ onGetPass }: StarShowsPageProps) {
         <motion.video
           {...videoProps}
           className="absolute inset-0 w-full h-full object-cover"
-          src="/ripplevdo.mp4"
+          src={LINEUP_VIDEO_URL}
           animate={{ scale: 1.06, x: heroOffset.x, y: heroOffset.y }}
           transition={{ type: 'spring', stiffness: 42, damping: 22 }}
         />
@@ -188,7 +190,7 @@ export default function StarShowsPage({ onGetPass }: StarShowsPageProps) {
       </section>
 
       <section className="relative min-h-[70vh] overflow-hidden flex items-end">
-        <video {...videoProps} className="absolute inset-0 w-full h-full object-cover" src="/ripplevdo.mp4" />
+        <video {...videoProps} className="absolute inset-0 w-full h-full object-cover" src={LINEUP_VIDEO_URL} />
         <div className="absolute inset-0 bg-black/55" />
         <div className="relative z-10 p-5 sm:p-14">
           <h2 className="max-w-4xl text-3xl font-black leading-tight sm:text-6xl md:text-7xl">THE RIPPLE IS ABOUT TO BREAK</h2>
